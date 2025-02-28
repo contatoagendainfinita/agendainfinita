@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+section {
+    padding: 16px;
+    text-align: center;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-gray-100 {
+    background-color: #f3f4f6;
+}
+
+.bg-blue-100 {
+    background-color: #dbeafe;
+}
+
+.bg-red-600 {
+    background-color: #dc2626;
+    color: white;
+}
+
+.bg-green-600 {
+    background-color: #16a34a;
+    color: white;
+}
+
+.text-black {
+    color: black;
+}
+
+.text-blue-600 {
+    color: #2563eb;
+}
+
+.text-red-600 {
+    color: #dc2626;
+}
+
+.text-gray-700 {
+    color: #374151;
+}
+
+.text-gray-900 {
+    color: #111827;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    font-weight: bold;
+}
+
+.mt-4 {
+    margin-top: 16px;
+}
+
+.mt-6 {
+    margin-top: 24px;
+}
+
+.p-2 {
+    padding: 8px;
+}
+
+.p-6 {
+    padding: 24px;
+}
+
+.p-8 {
+    padding: 32px;
+}
+
+.rounded-lg {
+    border-radius: 8px;
+}
+
+.border-l-4 {
+    border-left-width: 4px;
+}
+
+.border-t-4 {
+    border-top-width: 4px;
+}
+
+.border-blue-600 {
+    border-color: #2563eb;
+}
+
+.border-red-500 {
+    border-color: #ef4444;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.bg-green-600:hover {
+    background-color: #15803d;
+    transform: scale(1.05);
+}
+
+.bg-red-600:hover {
+    background-color: #b91c1c;
+    transform: scale(1.05);
+}
