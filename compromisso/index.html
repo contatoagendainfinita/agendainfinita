@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist de Compromisso</title>
+    <link rel="shortcut icon" href="images/logo.webp" type="image/webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+        .signature {
+            font-family: 'Caveat', sans-serif;
+            font-size: 1.5rem;
+            color: #4A235A;
+        }
+    </style>
+</head>
+<body class="bg-purple-900 text-white flex items-center justify-center min-h-screen p-4">
+    <div id="checklist" class="bg-purple-800 p-6 rounded-2xl shadow-lg w-full max-w-md text-center">
+        <img src="images/logoagenda.png" alt="Logo" class="mx-auto mb-4 w-24">
+        <h1 class="text-xl font-bold mb-4">📌 Checklist de Compromisso</h1>
+
+        <p class="text-xl italic mb-4">Isso pode parecer simples, mas ajuda a ativar seu foco e direção!</p>
+        <p class="font-bold text-lg">Preecha os campos abaixo!</p>
+        <input type="text" id="nome" placeholder="Seu Nome Completo" class="w-full p-2 rounded-md text-black mb-2">
+        <input type="number" id="clientes" placeholder="Número de clientes" class="w-full p-2 rounded-md text-black mb-4">
+
+        <button id="gerarTermoBtn" onclick="gerarTermo()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg mb-4 transition-transform transform hover:scale-105">
+            ✍️ Gerar Termo de Compromisso
+        </button>
+
+        <div id="termo" class="bg-white text-black p-4 rounded-lg mb-4 hidden opacity-0 transition-opacity duration-500 ease-in-out">
+            <p class="mb-2">Eu, <span id="termoNome" class="signature"></span>, me comprometo a colocar em prática todo conhecimento deste método e lotar minha agenda com <span id="termoClientes" class="font-bold"></span> novas clientes nos próximos 30 dias, trazendo prosperidade, abundância e conforto para mim e para minha família.</p>
+            <p class="text-center mt-4 text-sm">Assinado em <span id="termoData" class="font-bold"></span></p>
+            <p class="text-center mt-4 text-sm">Termo de compromisso com<span class="font-bold"> sucesso </span></p>
+        </div>
+        <button id="salvarImagemBtn" onclick="salvarImagem()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg mt-4 hidden">
+            📸 Baixar Termo
+        </button>
+        <ul class="text-left mb-4">
+            <li class="mb-2">✅ Assine mentalmente seu compromisso de aplicar esse método.</li>
+            <li class="mb-2">✅ Defina quantos clientes você quer atrair nos próximos 30 dias.</li>
+            <li class="mb-2">✅ Escreva esse número em um papel e deixe visível.</li>
+        </ul>
+        <p class="text-sm text-gray-300 mt-4">Tire Print da tela e guarde ou poste e marque nosso perfil do Instagram se sentir confortável <br> <span class="font-bold text-white">@agendainfinitaoficial</span></p>
+    </div>
+
+    <script>
+        function gerarTermo() {
+            let nome = document.getElementById("nome").value.trim();
+            let clientes = document.getElementById("clientes").value.trim();
+            let dataAtual = new Date().toLocaleDateString("pt-BR");
+
+            if (nome === "" || clientes === "") {
+                alert("Por favor, preencha todos os campos antes de gerar o termo.");
+                return;
+            }
+            
+            document.getElementById("termoNome").textContent = nome;
+            document.getElementById("termoClientes").textContent = clientes;
+            document.getElementById("termoData").textContent = dataAtual;
+
+            let termoDiv = document.getElementById("termo");
+            termoDiv.classList.remove("hidden");
+            setTimeout(() => {
+                termoDiv.classList.add("opacity-100");
+            }, 100);
+
+            document.getElementById("gerarTermoBtn").classList.add("hidden"); // Oculta botão após gerar termo
+            document.getElementById("salvarImagemBtn").classList.remove("hidden"); // Exibe botão para salvar imagem
+        }
+
+        function salvarImagem() {
+            html2canvas(document.querySelector("#termo")).then(canvas => {
+                let link = document.createElement("a");
+                link.href = canvas.toDataURL("image/png");
+                link.download = "termo_de_compromisso.png";
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
