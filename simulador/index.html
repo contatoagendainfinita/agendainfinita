@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Plano Estratégico</title>
+    <link rel="shortcut icon" href="images/logo.webp" type="image/webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="">
+
+<!-- Seção: Dados Iniciais -->
+<section class="bg-gradient-to-br from-purple-600 via-indigo-500 to-pink-500 p-10 text-white">
+    <h2 class="text-4xl font-extrabold mb-8 flex items-center">
+        <i class="fas fa-rocket mr-4 text-yellow-400"></i> Dados Iniciais
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Meta de Novos Clientes -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-yellow-300 flex items-center">
+                <i class="fas fa-bullseye mr-2"></i> Meta de Novos Clientes
+            </label>
+            <input type="number" id="metaClientes" placeholder="30" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-yellow-400" required>
+            <small class="text-gray-200">Quantos clientes você deseja atrair dentro do período analisado? Esse valor é essencial para definir sua estratégia de crescimento e investimento em marketing.</small>
+        </div>
+
+        <!-- Preço do Serviço 1 -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-cyan-300 flex items-center">
+                <i class="fas fa-hand-holding-dollar mr-2"></i> Preço do Serviço 1
+            </label>
+            <input type="number" id="precoServico1" placeholder="160" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-cyan-400" required>
+            <small class="text-gray-200">Informe o valor do serviço ou produto mais vendido do seu negócio. Esse serviço será a base do seu faturamento principal.</small>
+        </div>
+
+        <!-- Preço do Serviço 2 -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-green-300 flex items-center">
+                <i class="fas fa-plus-circle mr-2"></i> Preço do Serviço 2
+            </label>
+            <input type="number" id="precoServico2" placeholder="100" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-green-400" required>
+            <small class="text-gray-200">Qual serviço complementar você pode oferecer? Pense em algo que aumente o valor do ticket médio do seu cliente.</small>
+        </div>
+
+        <!-- Preço do Serviço 3 -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-pink-300 flex items-center">
+                <i class="fas fa-shopping-cart mr-2"></i> Preço do Serviço 3
+            </label>
+            <input type="number" id="precoServico3" placeholder="25" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-pink-400" required>
+            <small class="text-gray-200">Outro serviço complementar de menor valor, ideal para fidelização e aumento do LTV (Lifetime Value) do cliente.</small>
+        </div>
+    </div>
+</section>
+<!-- Seção: Aplicação de Verba -->
+<section class="bg-gradient-to-br from-blue-600 via-indigo-500 to-purple-500 p-10 text-white">
+    <h2 class="text-4xl font-extrabold mb-8 flex items-center">
+        <i class="fas fa-coins mr-4 text-yellow-300"></i> Aplicação de Verba
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Investimento Total -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-yellow-300 flex items-center">
+                <i class="fas fa-wallet mr-2"></i> Investimento Total
+            </label>
+            <input type="number" id="investimento" placeholder="100" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-yellow-400" required oninput="calcularLeads()">
+            <small class="text-gray-200">Informe o valor total que pretende investir em anúncios para atrair clientes.</small>
+        </div>
+
+        <!-- Custo por Lead (CPL) -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-cyan-300 flex items-center">
+                <i class="fas fa-bullseye mr-2"></i> CPL - Custo por Lead Médio
+            </label>
+            <input type="number" id="cpl" placeholder="10" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-cyan-400" required oninput="calcularLeads()">
+            <small class="text-gray-200">O custo por lead (CPL) representa o valor médio gasto para adquirir um potencial cliente. Caso não saiba, utilize R$10 como referência.</small>
+        </div>
+
+        <!-- Estimativa de Leads -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-green-300 flex items-center">
+                <i class="fas fa-user-plus mr-2"></i> Estimativa de Leads
+            </label>
+            <input type="number" id="leadsGerados" class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-green-400" readonly>
+            <small class="text-gray-200">Quantidade aproximada de leads que serão gerados com o investimento informado e o CPL estimado.</small>
+        </div>
+
+        <!-- Número de Dias Úteis -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-pink-300 flex items-center">
+                <i class="fas fa-calendar-alt mr-2"></i> Nº de Dias por Mês
+            </label>
+            <input type="number" id="diasUteis" placeholder="20" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-pink-400" required>
+            <small class="text-gray-200">Informe o número de dias úteis que você trabalha mensalmente para calcular corretamente a conversão de clientes.</small>
+        </div>
+    </div>
+</section>
+<!-- Seção: Funil Simulado -->
+<section class="bg-gradient-to-br from-green-600 via-teal-500 to-blue-500 p-10 text-white">
+    <h2 class="text-4xl font-extrabold mb-8 flex items-center">
+        <i class="fas fa-funnel-dollar mr-4 text-yellow-300"></i> Funil Simulado
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Captação -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-yellow-300 flex items-center">
+                <i class="fas fa-user-plus mr-2"></i> Captação
+            </label>
+            <input type="number" id="captacao" class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-yellow-400" readonly>
+            <small class="text-gray-200">Quantidade de leads que chegaram ao WhatsApp ou outro canal de contato.</small>
+        </div>
+
+        <!-- Taxa Ideal de Captação -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-cyan-300 flex items-center">
+                <i class="fas fa-percentage mr-2"></i> Taxa Ideal de Resposta
+            </label>
+            <input type="number" id="taxaResposta" placeholder="80" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-cyan-400" required oninput="calcularFunil()">
+            <small class="text-gray-200">Porcentagem de leads que realmente respondem e demonstram interesse.</small>
+        </div>
+
+        <!-- Negociação -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-green-300 flex items-center">
+                <i class="fas fa-comments-dollar mr-2"></i> Negociação
+            </label>
+            <input type="number" id="negociacao" class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-green-400" readonly>
+            <small class="text-gray-200">Número de clientes que realmente entram na etapa de negociação.</small>
+        </div>
+
+        <!-- Taxa Ideal de Fechamento -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-pink-300 flex items-center">
+                <i class="fas fa-percentage mr-2"></i> Taxa Ideal de Fechamento
+            </label>
+            <input type="number" id="taxaFechamento" placeholder="40" 
+                class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-pink-400" required oninput="calcularFunil()">
+            <small class="text-gray-200">Porcentagem de leads negociados que se tornam clientes pagantes.</small>
+        </div>
+
+        <!-- Fechamento -->
+        <div class="relative bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg transition-transform transform hover:scale-105">
+            <label class="block font-bold text-blue-300 flex items-center">
+                <i class="fas fa-handshake mr-2"></i> Fechamento
+            </label>
+            <input type="number" id="fechamento" class="w-full p-3 border-none rounded-lg mt-2 bg-gray-200 text-gray-800 focus:ring-2 focus:ring-blue-400" readonly>
+            <small class="text-gray-200">Número final de clientes fechados após a negociação.</small>
+        </div>
+    </div>
+</section>
+<!-- Seção: Faturamento Estimado -->
+<section class="bg-gradient-to-br from-purple-600 to-blue-500 p-10 text-white">
+    <h2 class="text-4xl font-extrabold mb-8 flex items-center">
+        <i class="fas fa-chart-line mr-4 text-white"></i> Faturamento Estimado
+    </h2>
+
+    <div class="bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-2xl shadow-lg">
+        <table class="w-full text-left text-white">
+            <thead>
+                <tr class="border-b border-gray-300">
+                    <th class="pb-3 text-lg">Item</th>
+                    <th class="pb-3 text-lg text-center">Números</th>
+                    <th class="pb-3 text-lg text-center">Taxa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Faturamento com Serviço 1 -->
+                <tr class="border-b border-gray-300">
+                    <td class="py-3 flex items-center"><i class="fas fa-dollar-sign mr-2"></i> Faturamento com Serviço 1</td>
+                    <td class="py-3 text-center font-bold" id="fatServ1">R$ 0,00</td>
+                    <td class="py-3 text-center">100%</td>
+                </tr>
+
+                <!-- Faturamento com Serviço 2 -->
+                <tr class="border-b border-gray-300">
+                    <td class="py-3 flex items-center"><i class="fas fa-hand-holding-usd mr-2"></i> Faturamento com Serviço 2</td>
+                    <td class="py-3 text-center font-bold" id="fatServ2">R$ 0,00</td>
+                    <td class="py-3 text-center">50%</td>
+                </tr>
+
+                <!-- Faturamento com Serviço 3 -->
+                <tr class="border-b border-gray-300">
+                    <td class="py-3 flex items-center"><i class="fas fa-coins mr-2"></i> Faturamento com Serviço 3</td>
+                    <td class="py-3 text-center font-bold" id="fatServ3">R$ 0,00</td>
+                    <td class="py-3 text-center">30%</td>
+                </tr>
+
+                <!-- Indicação +10% -->
+                <tr class="border-b border-gray-300" style="background-color: #007d19; padding: 1rem;">
+                    <td class="py-3 flex items-center"><i class="fas fa-user-friends mr-2"></i> Indicação +10%</td>
+                    <td class="py-3 text-center font-bold" id="indicacao">R$ 0,00</td>
+                    <td class="py-3 text-center">10%</td>
+                </tr>
+
+                <!-- Meta de Faturamento Total -->
+                <tr class="bg-white bg-opacity-30">
+                    <td class="py-4 text-xl font-bold flex items-center"><i class="fas fa-bullseye mr-2"></i> Meta de Faturamento Total</td>
+                    <td class="py-4 text-xl font-bold text-center text-yellow-300" id="metaFaturamento">R$ 0,00</td>
+                    <td class="py-4 text-center">-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    function getNumber(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
+}
+
+function calcularLeads() {
+    let investimento = getNumber('investimento');
+    let cpl = getNumber('cpl');
+    let leads = investimento / cpl;
+
+    document.getElementById('leadsGerados').value = leads.toFixed(2);
+    calcularFunil();
+}
+
+function calcularFunil() {
+    let leads = getNumber('leadsGerados');
+    let taxaResposta = getNumber('taxaResposta') / 100;
+    let taxaFechamento = getNumber('taxaFechamento') / 100;
+
+    let captacao = leads;
+    let negociacao = captacao * taxaResposta;
+    let fechamento = negociacao * taxaFechamento;
+
+    document.getElementById('captacao').value = captacao.toFixed(2);
+    document.getElementById('negociacao').value = negociacao.toFixed(2);
+    document.getElementById('fechamento').value = fechamento.toFixed(2);
+
+    calcularFaturamento();
+}
+
+function calcularFaturamento() {
+    let fechamento = getNumber('fechamento');
+    let servico1 = getNumber('precoServico1');
+    let servico2 = getNumber('precoServico2');
+    let servico3 = getNumber('precoServico3');
+
+    let fat1 = fechamento * servico1;
+    let fat2 = fechamento * (servico2 * 0.5);
+    let fat3 = fechamento * (servico3 * 0.3);
+    let indicacao = (fat1 + fat2 + fat3) * 0.1;
+    let metaFaturamento = fat1 + fat2 + fat3 + indicacao;
+
+    document.getElementById('fatServ1').innerText = `R$ ${fat1.toFixed(2)}`;
+    document.getElementById('fatServ2').innerText = `R$ ${fat2.toFixed(2)}`;
+    document.getElementById('fatServ3').innerText = `R$ ${fat3.toFixed(2)}`;
+    document.getElementById('indicacao').innerText = `R$ ${indicacao.toFixed(2)}`;
+    document.getElementById('metaFaturamento').innerText = `R$ ${metaFaturamento.toFixed(2)}`;
+}
+
+</script>
+
+
+</body>
+</html>
