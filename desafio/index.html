@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DESAFIO CLIENTES ESTÉTICA</title>
+  <meta name="description" content="ESTRATÉGIA AUTOMÁTICA QUE GERA DE 80 A 120 CLIENTES EM 30 DIAS Sem gerar conteúdos, Sem gastar tempos com lives, Sem depender de indicações!">
+  <meta name="robots" content="index, follow">
+  <link rel="preload" as="image" href="images/tp238-pf-s73-05-mockup-1.webp" type="image/webp" fetchpriority="high">
+  <!-- Tailwind e FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6a7e9.js" crossorigin="anonymous"></script>
+  
+  <!-- Preload + preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" media="all" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" media="all" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+  </noscript>
+
+  <!-- Pixel Facebook -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '487921774079439');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=487921774079439&ev=PageView&noscript=1"/></noscript>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Desafio Estética - Estratégia para atrair 80 a 120 clientes em 30 dias">
+  <meta property="og:description" content="Sem conteúdos, sem lives, sem indicações. Estratégia automática para lotar sua agenda.">
+  <meta property="og:image" content="https://agendainfinita.website/l/images/capa-og.webp">
+  <meta property="og:url" content="https://agendainfinita.website/l/desafio-estetica">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="images/logo.webp" type="image/webp">
+
+  <!-- JS e Data dinâmica -->
+  
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+      const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+      const today = new Date().toLocaleDateString('pt-BR', options);
+      const dataDinamica = document.getElementById("data-dinamica");
+      if (dataDinamica) {
+        dataDinamica.textContent = today;
+      }
+    });
+  </script> 
+</head>
+<body>
+    <!-- Seção Inicial: Urgência e Escassez -->
+    <section class="text-white text-center py-4" style="background-color: #020381;">
+        <h2 class="text-base md:text-lg font-bold leading-relaxed">
+            Oferta exclusiva disponível até:
+            <br><span id="data-dinamica" class="px-3 py-1 text-purple-800 font-bold rounded" style="background-color: #ff0700;color: #fff;">
+                Carregando...
+            </span>
+        </h2> 
+    </section>
+	 <!-- Seção Promessa -->
+	 <section class="relative text-white text-center py-4 px-2 bg-gradient-to-b from-gray-900 via-black to-gray-900">
+
+        <div class="container mx-auto px-2 relative z-10">
+            <h2 class="text-3xl leading-normal md:leading-snug" style="font-family: 'Bebas Neue', sans-serif;">
+                ESTRATÉGIA <span class="px-2 py-1 rounded-md" style="background-color: #741b75;">AUTOMÁTICA</span> QUE GERAR
+                <br>
+                DE <span class="px-3 py-1 rounded-md" style="background-color: #741b75;">80 A 120 CLIENTES</span> EM 
+                <span class="px-3 py-1 rounded-md" style="background-color: #741b75;">30 DIAS</span>
+            </h2>
+            <p class="italic underline text-lg mt-2 md:mt-8 text-white">
+                Sem gerar conteúdos, Sem gastar tempo com lives, Sem depender de indicações!
+            </p>
+            <div class="flex justify-center mt-2 md:mt-16 relative z-20">
+                <picture>
+                  <source srcset="images/tp238-pf-s73-05-mockup-1.webp" type="image/webp">
+                  <img 
+                    src="images/tp238-pf-s73-05-mockup-1.png" 
+                    alt="Mockup Estratégia Estética Lotada" 
+                    class="w-full max-w-lg md:max-w-2xl"
+                    width="800" 
+                    height="500"
+                    decoding="async">
+                </picture>
+              </div>
+              
+        </div>			
+	</section>
+	<div class="relative">
+		<div class="absolute bottom-0 w-full h-48 bg-white rounded-t-3xl"></div>
+	</div>
+
+<!-- Seção CTA -->
+<section class="bg-white text-center py-6">
+    <div class="container mx-auto px-2">
+        <!-- Botão CTA -->
+        <a href="https://pay.greenn.com.br/14070/offer/SLSUMs/?b_id=7866&b_id=7962&ch_id=1751&b_offer=C3zoma" 
+           class="inline-block bg-green-600 text-white font-bold text-2xl px-8 py-4 rounded-lg shadow-lg animate-pulse uppercase">
+            Liberar o Acesso
+            <br>
+            <span class="text-xl italic underline font-normal uppercase">Por Só <b>R$10</b></span>
+        </a>
+        <!-- Lista de Benefícios Melhorada -->
+<ul class="mt-4 text-lg text-gray-700 space-y-1 text-center max-w-md mx-auto">
+    <li class="flex items-center justify-center">
+        <i class="fas fa-check-circle text-green-500 mr-2"></i> <span>Pagamento único</span>
+    </li>
+    <li class="flex items-center justify-center">
+        <i class="fas fa-clock text-blue-500 mr-2"></i> <span>Acesso por 1 ano</span>
+    </li>
+    <li class="flex items-center justify-center">
+        <i class="fas fa-shield-alt text-purple-500 mr-2"></i> <span>Garantia de 15 dias</span>
+    </li>
+</ul>
+    </div>
+</section>
+<!-- Seção Explicativa -->
+<section class="bg-white text-left py-12 px-6">
+    <div class="container mx-auto max-w-3xl">
+        <p class="text-lg text-gray-700 leading-relaxed">
+            <span class="font-bold">Não é impulsionando posts aleatórios</span>, dando <span class="underline">"super descontos"</span>, 
+            dependendo de indicações ou passando <span class="italic font-semibold">horas criando conteúdos gratuitos</span> 
+            que você vai <span class="font-bold">lotar sua agenda</span>, ser reconhecida e ter <span class="underline">liberdade financeira...</span>
+        </p>
+
+        <p class="mt-6 text-lg text-gray-700">
+            Se você quer aprender a ter clientes <span class="font-bold">todos os dias</span>, é preciso ter um <span class="underline">plano bem definido</span>, 
+            não adianta só querer...
+        </p>
+
+        <p class="mt-4 text-lg text-gray-700">
+            Muitas profissionais sabem que para usar a internet para crescer negócios é preciso usar os três pilares:  
+            <span class="font-bold">Tráfego, Ofertas e Relacionamento</span>...  
+            <span class="italic">Mas poucos profissionais sabem fazer isso da forma correta.</span>
+        </p>
+
+        <p class="mt-4 text-lg text-gray-700">
+            É inclusive <span class="underline font-bold">mais simples do que parece</span>, mas existe a forma certa que traz resultados.  
+            Se você quer usar as redes sociais para ter clientes <span class="font-bold">todos os dias</span>, 
+            precisa aprender a maneira <span class="italic font-bold">mais prática e rápida</span> para isso acontecer.
+        </p>
+
+        <p class="mt-6 text-lg text-gray-700">
+            <span class="font-bold">Entenda</span>, existe uma estratégia para usar o Instagram ou Facebook 
+            para levar clientes <span class="font-bold">da sua cidade ao seu WhatsApp todos os dias.</span>
+        </p>
+
+        <p class="mt-4 text-lg text-gray-700 font-bold">
+            Mas como fazer isso da forma certa?
+        </p>
+
+        <div class="mt-6 text-lg text-gray-700 max-w-lg">
+            <p class="font-bold">
+                ✅ 01: Tráfego: <span class="font-normal">Quem não é visto não é lembrado. Você precisa que as pessoas vejam o que você tem a oferecer <span class="underline">todos os dias</span>.</span>
+            </p>
+            <p class="mt-3 font-bold">
+                ✅ 02: Oferta: <span class="font-normal">Crie uma oferta <span class="italic font-bold">sexy</span>, mostrando os benefícios e não a parte técnica do que você vende, gerando ainda mais <span class="underline">desejo</span>.</span>
+            </p>
+            <p class="mt-3 font-bold">
+                ✅ 03: Relacionamento: <span class="font-normal">Gere relacionamento e venda <span class="font-bold">todos os dias</span>, repetindo este ciclo de forma automática...</span>
+            </p>
+        </div>
+
+        <p class="mt-6 text-lg text-gray-700 leading-relaxed">
+            <span class="font-bold">Felizmente</span>, eu já deixei tudo pronto para você, em uma sequência de 
+            <span class="underline font-bold">aulas rápidas e práticas</span>, com exemplos para te mostrar como planejar e aplicar uma estratégia 
+            para bater sua meta nos próximos <span class="font-bold">30 dias</span>, seja de <span class="italic font-bold">80, 100, 120 ou mais clientes</span>.
+        </p>
+
+        <p class="mt-6 text-lg text-gray-700">
+            Você precisa apenas <span class="font-bold">copiar e colar</span> o que eu faço para minhas mentoradas,  
+            apertar alguns botões e esperar clientes chegarem ao seu <span class="underline">WhatsApp...</span>
+        </p>
+
+        <p class="mt-6 text-lg font-bold">
+            Mais nada.
+        </p>
+    </div>
+</section>
+<!-- Seção Benefícios -->
+<section class="bg-[#741b75] text-white text-left py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-3xl font-bold text-center mb-8 uppercase tracking-wide">O QUE VOCÊ VAI RECEBER HOJE ALÉM DA AULA PRÁTICA</h2>
+
+        <!-- Item 1: Calculadora de Investimento em Anúncios -->
+        <div class="flex flex-col md:flex-row items-center bg-white text-gray-900 rounded-lg p-6 mb-6 border-2 border-dashed border-[#020381] shadow-lg">
+            <div class="md:w-1/3 flex justify-center">
+                <picture>
+                  <source srcset="images/Layer-group_-1.webp" type="image/webp">
+                  <img 
+                    src="images/Layer-group_-1.png" 
+                    alt="Calculadora de Investimento" 
+                    class="w-48 md:w-full max-w-sm" 
+                    loading="lazy" 
+                    decoding="async"
+                    width="300" 
+                    height="258">
+                </picture>
+              </div>
+              
+            <div class="md:w-2/3 mt-4 md:mt-0 md:pl-6">
+                <h3 class="text-2xl font-bold uppercase">📊 Calculadora de Investimento</h3>
+                <p class="text-lg text-gray-700 mt-2">
+                    Eu vou te mostrar como <span class="font-bold italic">investir da forma certa</span> e 
+                    <span class="font-bold italic">quando investir</span> para crescer seu negócio da melhor forma possível!
+                </p>
+            </div>
+        </div>
+
+        <!-- Item 2: Otimização de Instagram para Vendas -->
+        <div class="flex flex-col md:flex-row items-center bg-white text-gray-900 rounded-lg p-6 mb-6 border-2 border-dashed border-[#020381] shadow-lg">
+            <div class="md:w-1/3 flex justify-center">
+                <picture>
+                  <source srcset="images/Phone-1.webp" type="image/webp">
+                  <img 
+                    src="images/Phone-1.png" 
+                    alt="Otimização de Instagram" 
+                    class="w-40 md:w-full max-w-sm" 
+                    loading="lazy" 
+                    decoding="async"
+                    width="227" 
+                    height="300">
+                </picture>
+              </div>
+              
+            <div class="md:w-2/3 mt-4 md:mt-0 md:pl-6">
+                <h3 class="text-2xl font-bold uppercase">📱 Otimização de Instagram</h3>
+                <p class="text-lg text-gray-700 mt-2">
+                    Não adianta usar <span class="font-bold italic">estratégias de blogueiros</span> para vender serviços e produtos 
+                    para negócios locais ou profissionais liberais.
+                </p>
+            </div>
+        </div>
+
+        <!-- Item 3: 05 Modelos de Descrições para Criar Ofertas -->
+        <div class="flex flex-col md:flex-row items-center bg-white text-gray-900 rounded-lg p-6 border-2 border-dashed border-[#020381] shadow-lg">
+            <div class="md:w-1/3 flex justify-center">
+                <picture>
+                  <source srcset="images/Box-2-262x300.webp" type="image/webp">
+                  <img 
+                    src="images/Box-2-262x300.png" 
+                    alt="Modelos de Descrições" 
+                    class="w-40 md:w-full max-w-sm" 
+                    loading="lazy" 
+                    decoding="async"
+                    width="262" 
+                    height="300">
+                </picture>
+              </div>
+              
+            <div class="md:w-2/3 mt-4 md:mt-0 md:pl-6">
+                <h3 class="text-2xl font-bold uppercase">📝 05 Modelos de Descrições</h3>
+                <p class="text-lg text-gray-700 mt-2">
+                    A arte de transformar textos em vendas é algo que pode mudar a forma que as pessoas enxergam o que você vende.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Seção de Persuasão e Prova Social -->
+<section class="bg-white text-left py-12 px-6">
+    <div class="container mx-auto max-w-3xl">
+
+        <!-- Título -->
+        <h2 class="text-2xl font-bold text-center mb-6 uppercase tracking-wide">
+            Pare de Sofrer Tentando Gerar <span class="line-through text-red-600">Conteúdo Gratuito</span>...
+        </h2>
+
+        <!-- Texto Principal -->
+        <p class="text-lg text-gray-700 leading-relaxed">
+            Nesse treinamento, eu vou te mostrar exatamente como levar <span class="font-bold">clientes da sua cidade</span> 
+            ou do <span class="font-bold">Brasil todo para o WhatsApp do seu negócio todos os dias!</span>
+        </p>
+
+        <!-- Bloco de Perguntas -->
+        <div class="mt-8 bg-[#020381] text-white p-4 rounded-lg text-center">
+            <h3 class="text-xl font-bold uppercase">Me Responda Uma Coisa...</h3>
+        </div>
+        <div class="mt-6 p-6 bg-gray-100 rounded-lg shadow-md border-l-4 border-[#020381]">
+            <ul class="space-y-3 text-lg text-gray-700">
+                <li class="font-bold"><i class="fas fa-question-circle text-[#020381] mr-2"></i> Você quer clientes interessadas em fechar serviços no seu WhatsApp todos os dias?</li>
+                <li class="font-bold"><i class="fas fa-question-circle text-[#020381] mr-2"></i> Seu serviço é de qualidade, mas está com poucas clientes?</li>
+                <li class="font-bold"><i class="fas fa-question-circle text-[#020381] mr-2"></i> Você sabe que seu negócio precisa de clientes para faturar e ter dinheiro para crescer?</li>
+                <li class="font-bold"><i class="fas fa-question-circle text-[#020381] mr-2"></i> Você fica com medo de investir e não ter retorno, mas vê suas concorrentes fazendo anúncios?</li>
+            </ul>
+        </div>
+
+        <!-- Chamada para Atenção -->
+        <p class="mt-6 text-lg font-bold text-center uppercase">
+            Então Leia Isso
+        </p>
+
+        <!-- Card de Prova Social -->
+        <div class="mt-6 p-6 bg-gray-100 rounded-lg shadow-md text-center">
+            <h3 class="text-lg font-bold">De Gustavo S. - Interior de Minas Gerais</h3>
+            <div class="flex justify-center mt-4">
+                <img src="images/eddf114d2fbdb9335ce5a338f78729e4-768x768.jpg" 
+                     alt="Gustavo S." class="w-32 h-32 rounded-full border-4 border-[#020381]" loading="lazy">
+            </div>
+            <p class="mt-4 text-lg text-gray-700 italic border-l-4 border-gray-300 pl-4">
+                "Eu consegui ajudar várias empreendedoras como a Isabelly a lotar a agenda usando apenas uma estratégia: 
+                <span class="font-bold">Anúncios para WhatsApp.</span>"
+            </p>
+        </div>
+
+        <!-- Depoimento Pessoal -->
+        <p class="mt-6 text-lg text-gray-700 leading-relaxed">
+            Eu sempre consegui clientes por indicação, mas na pandemia perdi quase todos — 
+            <span class="font-bold">menos aqueles que investiram em anúncios.</span>  
+            Foi então que eu resolvi ajudar mais profissionais a <span class="italic">não depender só de conteúdos nas redes sociais 
+            e indicação</span>, para evitar que aconteça o mesmo que aconteceu comigo: <span class="font-bold text-red-600">ficar sem clientes.</span>
+        </p>
+    </div>
+</section>
+
+<!-- Seção de Impacto - Importância dos Anúncios -->
+<section class="bg-[#020381] text-white text-left py-12 px-6">
+    <div class="container mx-auto max-w-3xl">
+
+        <!-- Título Impactante -->
+        <h2 class="text-3xl font-bold text-center mb-6 tracking-wide" style="font-family: 'Caveat', sans-serif;">
+            Quem não faz anúncios está ficando para trás...
+        </h2>
+
+        <!-- Introdução -->
+        <p class="text-lg leading-relaxed text-gray-300">
+            Algumas pessoas me diziam que <span class="font-bold text-white">fazer anúncios para negócios locais é diferente</span> de vender cursos online...
+            <br><span class="font-bold text-green-400 text-xl">E realmente, é muito diferente. É mais fácil!</span>
+        </p>
+
+        <!-- Bloco de Conversa (Diálogo de objeções) -->
+        <div class="mt-6 bg-gray-800 text-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-bold italic">"Eu avisava alguns profissionais para fazer anúncios, mas..."</h3>
+            <ul class="mt-4 space-y-3 text-gray-300">
+                <li class="font-bold border-l-4 border-red-500 pl-4">❌ Diziam que não tinham tempo</li>
+                <li class="font-bold border-l-4 border-red-500 pl-4">❌ Achavam complicado</li>
+            </ul>
+        </div>
+
+        <!-- Perguntas para despertar urgência -->
+        <div class="mt-6 p-6 bg-gray-900 rounded-lg shadow-lg border-l-4 border-yellow-500">
+            <h3 class="text-xl font-bold uppercase text-yellow-500">E você?</h3>
+            <ul class="mt-4 space-y-3 text-lg">
+                <li class="font-bold"><i class="fas fa-user-clock text-yellow-500 mr-2"></i> Quer construir listas de clientes no WhatsApp sem precisar oferecer descontos ou criar conteúdos?</li>
+                <li class="font-bold"><i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i> Você fica com medo de investir e não ter retorno, mas vê seus concorrentes fazendo anúncios?</li>
+            </ul>
+        </div>
+
+        <!-- FRASE IMPACTANTE - Sem Anúncios Ninguém Te Vê -->
+        <div class="mt-8 text-center">
+            <h3 class="text-3xl font-bold" style="font-family: 'Caveat', sans-serif;">
+                <i class="fas fa-eye text-white mr-2"></i> Sem anúncios ninguém te vê, e você não vende!
+            </h3>
+        </div>
+
+        <!-- Destaque com Estatística -->
+        <div class="mt-6 p-6 bg-gray-800 rounded-lg shadow-md text-center">
+            <p class="text-lg text-gray-300">Depender de tráfego orgânico, é suicídio.</p>
+            <h3 class="text-4xl font-extrabold text-red-500 mt-2">Menos de 5%</h3>
+            <p class="text-lg text-gray-300">das pessoas que te seguem veem seus posts.</p>
+        </div>
+
+        <!-- Explicação Final -->
+        <p class="mt-6 text-lg leading-relaxed text-gray-300">
+            Quando você <span class="font-bold text-white">não investe em anúncios</span>, o Facebook e Instagram entregam seu conteúdo para menos de <span class="font-bold text-red-500">5% dos seus seguidores</span>.
+            <br>Mas quando você faz anúncios, <span class="font-bold text-green-400">você controla esse número!</span>
+        </p>
+
+        <p class="mt-6 text-lg font-bold text-center uppercase">
+            Assim, você se torna mais assertivo e tem previsibilidade de faturamento durante o mês.
+        </p>
+		<!-- Imagem do Print de Reações -->
+        <div class="mt-2 flex justify-center">
+            <picture>
+              <source srcset="images/PRINT-DE-REACOES.jpg" type="image/webp">
+              <img 
+                src="images/PRINT-DE-REACOES.jpg" 
+                alt="Print de Reações" 
+                class="w-full max-w-lg rounded-lg shadow-lg" 
+                loading="lazy" 
+                decoding="async"
+                width="600" 
+                height="338">
+            </picture>
+          </div>
+          
+        <p class="text-sm text-gray-300 italic text-center mt-2">
+            Veja a diferença no engajamento quando se investe em anúncios.
+        </p>
+    </div>
+</section>
+<!-- Seção CTA -->
+<section class="bg-white text-center py-6">
+    <div class="container mx-auto px-2">
+        <!-- Botão CTA -->
+        <a href="https://pay.greenn.com.br/14070/offer/SLSUMs/?b_id=7866&b_id=7962&ch_id=1751&b_offer=C3zoma" 
+           class="inline-block bg-green-600 text-white font-bold text-2xl px-8 py-4 rounded-lg shadow-lg animate-pulse uppercase">
+            Liberar o Acesso
+            <br>
+            <span class="text-xl italic underline font-normal uppercase">Por Só <b>R$10</b></span>
+        </a>
+        <!-- Lista de Benefícios Melhorada -->
+<ul class="mt-4 text-lg text-gray-700 space-y-1 text-center max-w-md mx-auto">
+    <li class="flex items-center justify-center">
+        <i class="fas fa-check-circle text-green-500 mr-2"></i> <span>Pagamento único</span>
+    </li>
+    <li class="flex items-center justify-center">
+        <i class="fas fa-clock text-blue-500 mr-2"></i> <span>Acesso por 1 ano</span>
+    </li>
+    <li class="flex items-center justify-center">
+        <i class="fas fa-shield-alt text-purple-500 mr-2"></i> <span>Garantia de 15 dias</span>
+    </li>
+</ul>
+    </div>
+</section>
+<!-- Seção "Para Quem é Esta Estratégia?" -->
+<section class="bg-[#741b75] text-white text-left py-12 px-6">
+    <div class="container mx-auto max-w-3xl">
+
+        <!-- Título Impactante -->
+        <h2 class="text-3xl font-bold text-center mb-6 uppercase tracking-wide">
+            Para Quem é Esta Estratégia?
+        </h2>
+
+        <!-- Benefícios -->
+        <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+            <ul class="space-y-4 text-lg">
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-400 mr-3"></i> Ideal para quem quer cobrar mais por seus serviços.
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-400 mr-3"></i> Para quem não quer depender de indicações.
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-400 mr-3"></i> Para quem não tem tempo de criar conteúdos nas redes sociais.
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle text-green-400 mr-3"></i> Para quem deseja faturar pelo menos 3X mais sem precisar dar descontos!
+                </li>
+            </ul>
+        </div>
+
+        <!-- Profissionais que já tiveram resultados -->
+        <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold uppercase text-center">Profissionais que já aplicaram tiveram resultados:</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-center">
+                <span class="bg-gray-900 p-3 rounded-md shadow text-lg font-bold">Nail Designer</span>
+                <span class="bg-gray-900 p-3 rounded-md shadow text-lg font-bold">Instrutores</span>
+                <span class="bg-gray-900 p-3 rounded-md shadow text-lg font-bold">Terapeutas</span>
+                <span class="bg-gray-900 p-3 rounded-md shadow text-lg font-bold">Maquiadoras</span>
+                <span class="bg-gray-900 p-3 rounded-md shadow text-lg font-bold">Consultores</span>
+                <span class="bg-gray-900 p-3 rounded-md shadow text-lg font-bold">Treinadores</span>
+                <span class="bg-gray-900 p-3 rounded-md shadow text-lg font-bold">Mentores</span>
+            </div>
+
+            <p class="mt-6 text-lg text-center">
+                E em outros <span class="font-bold text-yellow-400">82 nichos diferentes</span>!
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Seção de Provas Sociais - Carrossel Manual -->
+<section class="bg-gray-100 text-gray-900 text-left py-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+
+        <!-- Título Impactante -->
+        <h2 class="text-3xl font-bold text-center mb-6 uppercase tracking-wide">
+            Veja Quem Já Está Tendo Resultados!
+        </h2>
+
+        <!-- Carrossel Manual -->
+        <div class="flex overflow-x-auto space-x-4 p-4 scroll-smooth snap-x snap-mandatory">
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/IMG7-768x1365.jpg" alt="Prova Social 1" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/IMG6-768x1365.jpg" alt="Prova Social 2" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/IMG5-768x1365.jpg" alt="Prova Social 3" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/IMG4-768x1365.jpg" alt="Prova Social 4" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/IMG3-768x1365.jpg" alt="Prova Social 5" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/IMG2-768x1365.jpg" alt="Prova Social 6" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/IMG1-768x1365.jpg" alt="Prova Social 7" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/depoimento-3-768x1365.jpg" alt="Depoimento 3" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/depoumento-2-768x1365.jpg" alt="Depoimento 2" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+            <div class="flex-none w-60 md:w-72 snap-center">
+                <img src="images/depoimento-1-768x1365.jpg" alt="Depoimento 1" class="w-full rounded-lg shadow-lg" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Chamado para Ação -->
+        <p class="mt-8 text-lg font-bold text-center uppercase">
+            Esses são apenas alguns dos resultados... Agora é a sua vez!
+        </p>
+
+    </div>
+</section>
+
+<!-- Seção CTA -->
+<section class="bg-white text-center py-6">
+    <div class="container mx-auto px-2">
+        <!-- Botão CTA -->
+        <a href="https://pay.greenn.com.br/14070/offer/SLSUMs/?b_id=7866&b_id=7962&ch_id=1751&b_offer=C3zoma" 
+           class="inline-block bg-green-600 text-white font-bold text-2xl px-8 py-4 rounded-lg shadow-lg animate-pulse uppercase">
+            Liberar o Acesso
+            <br>
+            <span class="text-xl italic underline font-normal uppercase">Por Só <b>R$10</b></span>
+        </a>
+        <!-- Lista de Benefícios Melhorada -->
+<ul class="mt-4 text-lg text-gray-700 space-y-1 text-center max-w-md mx-auto">
+    <li class="flex items-center justify-center">
+        <i class="fas fa-check-circle text-green-500 mr-2"></i> <span>Pagamento único</span>
+    </li>
+    <li class="flex items-center justify-center">
+        <i class="fas fa-clock text-blue-500 mr-2"></i> <span>Acesso por 1 ano</span>
+    </li>
+    <li class="flex items-center justify-center">
+        <i class="fas fa-shield-alt text-purple-500 mr-2"></i> <span>Garantia de 15 dias</span>
+    </li>
+</ul>
+    </div>
+</section>
+<!-- Seção Dúvidas Frequentes -->
+<section class="bg-gray-100 text-gray-900 text-left py-12 px-6">
+    <div class="container mx-auto max-w-3xl">
+
+        <!-- Título Impactante -->
+        <h2 class="text-3xl font-bold text-center mb-6 uppercase tracking-wide">
+            Dúvidas Frequentes
+        </h2>
+
+        <p class="text-lg text-center text-gray-600 mb-8">
+            Sua dúvida deve estar respondida abaixo
+        </p>
+
+        <!-- FAQ Items -->
+        <div class="space-y-4">
+
+            <!-- FAQ Item 1 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">Não posso simplesmente impulsionar posts?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Claro que você pode, porém há uma grande chance de não dar certo, você perder dinheiro e se frustrar por não saber todos os pilares para ter resultados todos os dias.
+                </p>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">Preciso de alguma ferramenta para criar anúncios?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Sim, você vai precisar das ferramentas gratuitas que vamos indicar, e você não precisa de um site para ter resultados.
+                </p>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">O que recebo ao me inscrever?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Quando concluir sua inscrição, você será redirecionado para uma área de membros na plataforma com todas as instruções, materiais para download e acesso. Você receberá no e-mail o link, usuário e senha de acesso também.
+                </p>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">Como é o suporte se eu tiver dúvidas?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Você terá total suporte, poderá usar a área de membros para tirar suas dúvidas comigo e terá acesso ao meu e-mail.
+                </p>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">Para Qual tipo de negócio funciona?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Este Desafio funciona para qualquer profissional que venda serviços ou produtos e queira receber clientes todos os dias sem depender de indicação e sem precisar passar horas gerando conteúdos gratuitos.
+                </p>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">Por que este Desafio é diferente de outros cursos no mercado?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Bom, se você chegou até aqui, provavelmente passou por algum dos meus anúncios onde eu aplico exatamente o que estou ensinando aqui. Não conheço outro método no mercado com essa qualidade e preço.
+                </p>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">Existe uma garantia de devolução do dinheiro?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Sim! Se isso não for tudo o que prometi acima e MAIS, reembolsarei cada centavo investido. Você tem 7 dias para testar e ver se realmente é o que eu prometi!
+                </p>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div class="bg-white p-4 rounded-lg shadow-md group">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-bold">O que significa "Acesso por um Ano"?</h3>
+                    <i class="fas fa-chevron-down text-gray-500 group-hover:rotate-180 transition-transform"></i>
+                </div>
+                <p class="text-gray-700 mt-2 hidden group-hover:block">
+                    Assim que você adquirir, terá um ano para ver todo o conteúdo e acessar quando quiser. Depois que acabar este período, você pode atualizar.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- Seção "Pirataria é Crime" -->
+<section class="bg-[#741b75] text-white text-left py-12 px-6">
+    <div class="container mx-auto max-w-3xl text-center">
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-6">
+            <picture>
+              <source srcset="images/Group_-2.webp" type="image/webp">
+              <img 
+                src="images/Group_-2.png" 
+                alt="Logo Pirataria é Crime" 
+                class="w-52"
+                loading="lazy"
+                decoding="async"
+                width="526" 
+                height="98">
+            </picture>
+          </div>
+          
+
+        <!-- Título Impactante -->
+        <h2 class="text-3xl font-bold uppercase mb-6">
+            <i class="fas fa-exclamation-triangle text-yellow-400 mr-2"></i> PIRATARIA É CRIME
+        </h2>
+
+        <!-- Texto Principal -->
+        <div class="bg-[#020381] p-6 rounded-lg shadow-lg border border-yellow-400">
+            <p class="text-lg leading-relaxed">
+                A venda dos <span class="font-bold">Produtos Agenda Infinita</span> só pode ser realizada através deste site, registrado em nome de <span class="font-bold">MSG AGDG LTDA.</span> Qualquer outro site onde você encontre este programa é uma <span class="uppercase font-bold">FALSIFICAÇÃO</span> e vai contra as leis.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed">
+                Evite falsificações e recuse conteúdos ilegais ou pirateados. <span class="uppercase font-bold">NÃO</span> adquira programas parecidos e que não são baseados em anos de estudo da psicologia comportamental.
+            </p>
+            <p class="mt-4 text-lg font-bold">
+                Não nos responsabilizamos por compras realizadas em outros sites.
+            </p>
+        </div>
+
+        <!-- Nota Legal sobre Facebook -->
+        <p class="mt-6 text-sm text-gray-300 italic">
+            Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais.
+        </p>
+
+    </div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white text-center py-6 border-t border-gray-700">
+    <div class="container mx-auto max-w-4xl flex flex-col md:flex-row items-center justify-between px-4">
+
+        <!-- Copyright -->
+        <p class="text-sm mb-2 md:mb-0">
+            Copyright © <span id="year"></span> Agenda Infinita
+        </p>
+
+        <!-- Links -->
+        <div class="flex space-x-4">
+            <a href="#" class="text-sm hover:text-gray-400 transition">Política de Privacidade</a>
+            <span class="text-sm text-gray-500">|</span>
+            <a href="#" class="text-sm hover:text-gray-400 transition">Termos de Uso</a>
+        </div>
+
+    </div>
+</footer>
+
+<!-- Atualiza automaticamente o ano -->
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
