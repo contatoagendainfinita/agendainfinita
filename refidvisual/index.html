@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Paletas de Cores</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .copy-card {
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    .copy-card:hover {
+      transform: scale(1.03);
+    }
+    .flex {
+  display: flex;
+  justify-content: center;      /* centraliza os cards da esquerda */
+  align-items: center;          /* centraliza verticalmente */
+  gap: 1.5rem;                  /* espaçamento entre os lados */
+}
+.pattern-bg {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABtJREFUGFdjZGBg+M/AwMDIAAVwBjYBsEoMFQBW5gIF0HSEnwAAAABJRU5ErkJggg==) repeat;
+    }
+  </style>
+</head>
+<body class="pattern-bg bg-slate-900 text-white p-10 space-y-10">
+  <h1 class="text-4xl mb-6 font-bold text-center">🎨 Paletas de Cores com Aplicações</h1>
+
+  <!-- Paleta 1 -->
+  <section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#F1632D')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #F1632D">#F1632D <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#453A38')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #453A38">#453A38 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#F8F7F3')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #F8F7F3">#F8F7F3 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #F1632D;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #453A38;">Título aqui</h2>
+      <p class="mb-4" style="color: #453A38;">Grandes resultados surgem de pequenos atos feitos com constância. Continue.</p>
+      <button onclick="copyColor('#F1632D')" class="mt-2 bg-[#453A38] text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #F1632D
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta 2 -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#745DAB')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #745DAB">#745DAB <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FCDCE1')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FCDCE1">#FCDCE1 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#BEA6D8')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #BEA6D8">#BEA6D8 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #745DAB;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #FCDCE1;">Título aqui</h2>
+      <p class="mb-4" style="color: #FCDCE1;">Grandes resultados surgem de pequenos atos feitos com constância. Continue.</p>
+      <button onclick="copyColor('#745DAB')" class="mt-2 bg-[#FCDCE1] text-[#745DAB] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #745DAB
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta 3 -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#C242FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #C242FF">#C242FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#2D2D2F')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #2D2D2F">#2D2D2F <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFFFFD')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFFFFD">#FFFFFD <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #2D2D2F;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #C242FF;">Título aqui</h2>
+      <p class="mb-4 text-white">Grandes resultados surgem de pequenos atos feitos com constância. Continue.</p>
+      <button onclick="copyColor('#C242FF')" class="mt-2 bg-white text-[#C242FF] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #C242FF
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta 4 -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#4C0192')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #4C0192">#4C0192 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#CFFE00')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #CFFE00">#CFFE00 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#F8F7F3')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #F8F7F3">#F8F7F3 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #4C0192;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #CFFE00;">Título aqui</h2>
+      <p class="mb-4" style="color: #F8F7F3;">Grandes resultados surgem de pequenos atos feitos com constância. Continue.</p>
+      <button onclick="copyColor('#CFFE00')" class="mt-2 bg-[#F8F7F3] text-[#4C0192] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #CFFE00
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta 5 -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#9668D6')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #9668D6">#9668D6 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#EFF1F0')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #EFF1F0">#EFF1F0 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#2D2D2F')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #2D2D2F">#2D2D2F <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #EFF1F0;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #9668D6;">Título aqui</h2>
+      <p class="mb-4" style="color: #2D2D2F;">Grandes resultados surgem de pequenos atos feitos com constância. Continue.</p>
+      <button onclick="copyColor('#9668D6')" class="mt-2 bg-[#2D2D2F] text-[#EFF1F0] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #9668D6
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta 6 -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#961BF1')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #961BF1">#961BF1 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FBBC00')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FBBC00">#FBBC00 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFFFFD')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFFFFD">#FFFFFD <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #961BF1;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #FBBC00;">Título aqui</h2>
+      <p class="mb-4" style="color: #FFFFFD;">Grandes resultados surgem de pequenos atos feitos com constância. Continue.</p>
+      <button onclick="copyColor('#FBBC00')" class="mt-2 bg-[#FFFFFD] text-[#961BF1] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #FBBC00
+      </button>
+    </div>
+  </section>
+  <hr>
+  <!-- Paleta A -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#C242FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #C242FF">#C242FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFDEF7')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFDEF7">#FFDEF7 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#2B183A')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #2B183A">#2B183A <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #C242FF;">
+      <h2 class="text-3xl font-bold mb-2 text-white">Título aqui</h2>
+      <p class="mb-4 text-white">Explore novas ideias com um toque ousado e criativo.</p>
+      <button onclick="copyColor('#C242FF')" class="mt-2 bg-[#2B183A] text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #C242FF
+      </button>
+    </div>
+  </section>
+  <hr>
+  <!-- Paleta B -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#C242FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #C242FF">#C242FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#A3FFDA')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #A3FFDA">#A3FFDA <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#1E1B32')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #1E1B32">#1E1B32 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #1E1B32;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #C242FF;">Título aqui</h2>
+      <p class="mb-4 text-white">Conecte elegância com impacto visual.</p>
+      <button onclick="copyColor('#C242FF')" class="mt-2 bg-[#C242FF] text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #C242FF
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta C -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#C242FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #C242FF">#C242FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFF3B0')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFF3B0">#FFF3B0 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#4B306A')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #4B306A">#4B306A <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #4B306A;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #FFF3B0;">Título aqui</h2>
+      <p class="mb-4 text-white">Uma combinação que transmite autoridade com leveza.</p>
+      <button onclick="copyColor('#C242FF')" class="mt-2 bg-[#FFF3B0] text-[#4B306A] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #C242FF
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta D -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#C242FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #C242FF">#C242FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFF0F6')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFF0F6">#FFF0F6 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#32084C')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #32084C">#32084C <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #C242FF;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #32084C;">Título aqui</h2>
+      <p class="mb-4 text-white">Modernidade com um toque feminino e sofisticado.</p>
+      <button onclick="copyColor('#C242FF')" class="mt-2 bg-[#32084C] text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #C242FF
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta E -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#C242FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #C242FF">#C242FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#F4FFE1')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #F4FFE1">#F4FFE1 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#302B38')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #302B38">#302B38 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #F4FFE1;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #C242FF;">Título aqui</h2>
+      <p class="mb-4" style="color: #302B38;">Brilho com sofisticação, sem perder a delicadeza.</p>
+      <button onclick="copyColor('#C242FF')" class="mt-2 bg-[#C242FF] text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #C242FF
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta F -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#C242FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #C242FF">#C242FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#E4F0FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #E4F0FF">#E4F0FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#1A1D2D')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #1A1D2D">#1A1D2D <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6" style="background-color: #1A1D2D;">
+      <h2 class="text-3xl font-bold mb-2" style="color: #C242FF;">Título aqui</h2>
+      <p class="mb-4 text-white">Inspiração e tecnologia com um toque de luxo.</p>
+      <button onclick="copyColor('#C242FF')" class="mt-2 bg-[#C242FF] text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #C242FF
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta G -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#FF3131')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #FF3131">#FF3131 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFF02A')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFF02A">#FFF02A <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#000000')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #000000">#000000 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6 bg-[#FF3131]">
+      <h2 class="text-3xl font-bold mb-2 text-[#000000]">Título de impacto</h2>
+      <p class="mb-4 text-[#000000]">Atenção total para ofertas, chamadas e botões.</p>
+      <button onclick="copyColor('#FF3131')" class="mt-2 bg-black text-yellow-400 px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #FF3131
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta H -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#FF0080')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #FF0080">#FF0080 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#00FFF7')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #00FFF7">#00FFF7 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#2D033B')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #2D033B">#2D033B <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6 bg-[#FF0080]">
+      <h2 class="text-3xl font-bold mb-2 text-[#2D033B]">Pink com personalidade</h2>
+      <p class="mb-4 text-white">Perfeita para destaque visual e branding moderno.</p>
+      <button onclick="copyColor('#FF0080')" class="mt-2 bg-[#2D033B] text-[#00FFF7] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #FF0080
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta I -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#00FF00')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #00FF00">#00FF00 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#0000FF')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #0000FF">#0000FF <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#121212')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #121212">#121212 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6 bg-[#0000FF]">
+      <h2 class="text-3xl font-bold mb-2 text-[#00FF00]">Estética Tech</h2>
+      <p class="mb-4 text-white">Visual forte para marcas digitais e futuristas.</p>
+      <button onclick="copyColor('#00FF00')" class="mt-2 bg-[#121212] text-[#00FF00] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #00FF00
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta J -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#FF6D00')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #FF6D00">#FF6D00 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFB300')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFB300">#FFB300 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#3E2723')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #3E2723">#3E2723 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6 bg-[#FF6D00]">
+      <h2 class="text-3xl font-bold mb-2 text-[#FFB300]">Pôr do sol digital</h2>
+      <p class="mb-4 text-white">Impactante, quente e moderno para conversão.</p>
+      <button onclick="copyColor('#FF6D00')" class="mt-2 bg-[#3E2723] text-[#FFB300] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #FF6D00
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta K -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#FFB400')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFB400">#FFB400 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#00A6ED')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #00A6ED">#00A6ED <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#0F0F0F')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #0F0F0F">#0F0F0F <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6 bg-[#FFB400]">
+      <h2 class="text-3xl font-bold mb-2 text-[#0F0F0F]">Alerta Criativo</h2>
+      <p class="mb-4 text-[#0F0F0F]">Cores comerciais vibrantes para conversão rápida.</p>
+      <button onclick="copyColor('#FFB400')" class="mt-2 bg-[#0F0F0F] text-[#00A6ED] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #FFB400
+      </button>
+    </div>
+  </section>
+<hr>
+<!-- Paleta L -->
+<section class="flex gap-6">
+    <div class="flex flex-col justify-between gap-4 w-1/3">
+      <div onclick="copyColor('#800080')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #800080">#800080 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#FFFF00')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-black text-lg font-bold" style="background-color: #FFFF00">#FFFF00 <i class="fas fa-copy ml-2"></i></div>
+      <div onclick="copyColor('#111111')" class="copy-card h-[100px] w-full rounded shadow-md flex items-center justify-center text-white text-lg font-bold" style="background-color: #111111">#111111 <i class="fas fa-copy ml-2"></i></div>
+    </div>
+    <div class="w-2/3 h-[312px] rounded shadow-lg p-6 bg-[#800080]">
+      <h2 class="text-3xl font-bold mb-2 text-[#FFFF00]">Estilo ousado</h2>
+      <p class="mb-4 text-white">Perfeito para branding com personalidade forte.</p>
+      <button onclick="copyColor('#800080')" class="mt-2 bg-[#FFFF00] text-[#800080] px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fas fa-copy"></i> Copiar: #800080
+      </button>
+    </div>
+  </section>
+<hr>    
+<!-- Rodapé -->
+<section class="mt-16 p-10 bg-[#2D2D2F] text-center rounded-xl shadow-lg">
+    <h2 class="text-3xl font-bold mb-4 text-white">Curtiu essas paletas?</h2>
+    <p class="text-gray-300 mb-6">Salve essa página nos seus favoritos e use as combinações sempre que quiser criar algo visualmente incrível.</p>
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="bg-[#C242FF] hover:bg-[#a632d9] text-white px-6 py-3 rounded-full font-semibold transition">
+      <i class="fas fa-arrow-up mr-2"></i> Voltar ao topo
+    </button>
+  </section>
+<!-- Footer -->
+<footer class="mt-10 py-6 text-center text-sm text-gray-400">
+    <p>Feito com ❤️ por Gustavo | Projeto Agenda Infinita | Academy</p>
+    <p>Design e cores inspirados em ideias criativas para branding digital</p>
+  </footer>
+      
+  <script>
+    function copyColor(code) {
+      navigator.clipboard.writeText(code).then(() => {
+        alert(`Código ${code} copiado para a área de transferência!`);
+      });
+    }
+  </script>
+</body>
+</html>
