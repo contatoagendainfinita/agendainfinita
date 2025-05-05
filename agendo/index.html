@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Guia de Identidade Visual – Agendô</title>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .copy-card {
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    .copy-card:hover {
+      transform: scale(1.03);
+    }
+    .glow-hover:hover {
+      box-shadow: 0 0 12px #C242FF;
+      transition: all 0.3s ease;
+    }
+    .pattern-bg {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAAXNSR0IArs4c6QAAABtJREFUGFdjZGBg+M/AwMDIAAVwBjYBsEoMFQBW5gIF0HSEnwAAAABJRU5ErkJggg==) repeat;
+    }
+  </style>
+</head>
+<body class="pattern-bg bg-[#111111] text-white p-10 space-y-10">
+  <h1 class="text-4xl mb-6 font-bold text-center text-[#FFFF00]">Guia de Identidade Visual – Agendô</h1>
+
+  <section class="bg-[#2E003E] p-6 rounded-xl shadow-md space-y-4">
+    <h2 class="text-2xl font-bold text-[#FFFF00]">📈 Paleta Final Agendô – Confirmada</h2>
+    <p>Esta é a paleta oficial do SaaS Agendô, voltada para profissionais de beleza e estética.</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm font-medium mt-6">
+      <div class="rounded shadow-md p-4 bg-[#800080] text-white">
+        <strong>Cor Primária</strong>
+        <p>#800080</p>
+        <small>Marca, ícones, destaques</small>
+        <button onclick="copyColor('#800080')" class="mt-2 bg-white text-[#800080] px-3 py-1 rounded-full text-xs flex items-center gap-2">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+      <div class="rounded shadow-md p-4 bg-[#FFFF00] text-black">
+        <strong>Cor Secundária</strong>
+        <p>#FFFF00</p>
+        <small>CTAs, botões, alertas</small>
+        <button onclick="copyColor('#FFFF00')" class="mt-2 bg-black text-[#FFFF00] px-3 py-1 rounded-full text-xs flex items-center gap-2">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+      <div class="rounded shadow-md p-4 bg-[#FFFF00] text-black border border-white">
+        <strong>Hover</strong>
+        <p>#FFFF00</p>
+        <small>Botões e links</small>
+        <button onclick="copyColor('#FFFF00')" class="mt-2 bg-black text-[#FFFF00] px-3 py-1 rounded-full text-xs flex items-center gap-2">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+      <div class="rounded shadow-md p-4 bg-[#2E003E] text-white">
+        <strong>Barra de Navegação</strong>
+        <p>#2E003E</p>
+        <small>Sidebar, header</small>
+        <button onclick="copyColor('#2E003E')" class="mt-2 bg-white text-[#2E003E] px-3 py-1 rounded-full text-xs flex items-center gap-2">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+      <div class="rounded shadow-md p-4 bg-white text-black">
+        <strong>Texto dos Botões</strong>
+        <p>#111111</p>
+        <small>Legível sobre fundo amarelo</small>
+        <button onclick="copyColor('#111111')" class="mt-2 bg-[#111111] text-white px-3 py-1 rounded-full text-xs flex items-center gap-2">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+      <div class="rounded shadow-md p-4 bg-[#2E003E] text-white">
+        <strong>Hover dos Botões</strong>
+        <p>#2E003E</p>
+        <small>Fundo escuro com texto claro</small>
+        <button onclick="copyColor('#2E003E')" class="mt-2 bg-white text-[#2E003E] px-3 py-1 rounded-full text-xs flex items-center gap-2">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <h3 class="text-xl font-semibold text-[#FFFF00]">💡 Dicas de Uso Visual</h3>
+      <ul class="list-disc ml-6 space-y-1">
+        <li>Botões <strong>amarelos com texto preto</strong> geram alto contraste e chamam a atenção.</li>
+        <li><strong>Hover roxo escuro</strong> transmite elegância e feedback visual claro.</li>
+        <li><strong>Sidebar e header</strong> com #2E003E ajudam a manter foco no conteúdo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <section class="mt-16 p-10 bg-[#2E003E] text-center rounded-xl shadow-lg">
+    <h2 class="text-3xl font-bold mb-4 text-[#FFFF00]">Curtiu essa identidade?</h2>
+    <p class="text-gray-300 mb-6">Salve esta página e use essa combinação poderosa sempre que quiser destacar sua marca com força.</p>
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="bg-[#FFFF00] hover:bg-[#2E003E] text-[#111111] hover:text-white px-6 py-3 rounded-full font-semibold transition">
+      <i class="fas fa-arrow-up mr-2"></i> Voltar ao topo
+    </button>
+  </section>
+
+  <footer class="mt-10 py-6 text-center text-sm text-gray-400">
+    <p>Feito com ❤️ por Gustavo | Projeto Agenda Infinita | Academy</p>
+    <p>Design e branding alinhados para conversão e memorabilidade.</p>
+  </footer>
+
+  <script>
+    function copyColor(code) {
+      navigator.clipboard.writeText(code).then(() => {
+        alert(`Código ${code} copiado para a área de transferência!`);
+      });
+    }
+  </script>
+</body>
+</html>
