@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda Cheia em 7 Dias | Método para Atrair 5 Clientes por Semana</title>
+  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Tailwind e FontAwesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <link href="output.css" rel="stylesheet"> -->
+
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#8A2BE2',      // Roxo vivo
+          accent: '#FFB703',       // Amarelo ouro
+          light: '#FDF7FF',        // Fundo suave
+          dark: '#1F1F1F',         // Texto principal
+          muted: '#6B7280'         // Texto secundário
+        }
+      }
+    }
+  }
+</script>
+
+
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Google Fonts Preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" media="all" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" media="all" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap">
+  </noscript>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Agenda Cheia em 7 Dias | Método para Atrair 5 Clientes por Semana">
+  <meta property="og:description" content="Aprenda como lotar sua agenda usando apenas Instagram e WhatsApp, sem precisar aparecer ou investir em anúncios.">
+  <meta property="og:image" content="/images/capa-og.webp">
+  <meta property="og:url" content=".">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/images/logo.webp" type="image/webp">
+
+  <!-- JS para data dinâmica -->
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+      const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+      const today = new Date().toLocaleDateString('pt-BR', options);
+      const dataDinamica = document.getElementById("data-dinamica");
+      if (dataDinamica) {
+        dataDinamica.textContent = today;
+      }
+    });
+  </script>
+ 
+<!-- Destaque customizado alinhado à paleta -->
+<style>
+  .background-destaque {
+    position: relative;
+    background-color: #FFB703; /* accent amarelo ouro */
+    color: #1F1F1F; /* texto escuro para contraste */
+    padding: 0 6px;
+    display: inline-block;
+    font-weight: bold;
+    border-radius: 0.25rem;
+  }
+
+  .background-destaque::before,
+  .background-destaque::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    background-color: #8A2BE2; /* primary roxo */
+  }
+
+  .background-destaque::before {
+    right: -4px;
+    bottom: -4px;
+  }
+
+  .background-destaque::after {
+    top: -4px;
+    left: -4px;
+  }
+</style>
+<style>
+.button.alt {
+  background: #0e7b01 !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 1rem;
+  padding: 18px 60px;
+  font-size: 1.15rem;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 #0e7b01b3;
+  animation: pulse 1.7s infinite;
+  transition: background 0.3s, transform 0.2s;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #0e7b0140;
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 24px #0e7b0100;
+    transform: scale(1.04);
+  }
+  100% {
+    box-shadow: 0 0 0 0 #0e7b0100;
+    transform: scale(1);
+  }
+}
+</style>
+
+
+</head>
+<body class="bg-light text-dark font-sans antialiased">
+
+  <!-- Seção Inicial: Urgência e Escassez -->
+  <section class="bg-primary text-white text-center py-2 px-4">
+    <h2 class="text-sm sm:text-base md:text-lg font-semibold leading-snug">
+      Oferta exclusiva disponível até:
+      <br>
+      <span id="data-dinamica" class="inline-block mt-1 px-3 py-1 text-white bg-red-600 text-sm rounded font-bold">
+        Carregando...
+      </span>
+    </h2>
+  </section>
+<!-- Seção 1: Headline + Promessa + Imagem + CTA -->
+<section class="bg-dark text-white text-center py-4 px-4">
+  <div class="mx-auto">
+    <h1 class="text-3xl sm:text-4xl font-extrabold leading-[1.4] tracking-tight mb-3">
+      5 Clientes em <span class="background-destaque">7 Dias</span><br>
+      Usando Só <span class="background-destaque">Instagram</span> e <span class="background-destaque">WhatsApp</span>
+    </h1>
+
+    <h2 class="text-white text-xl text-muted py-4 italic underline ">
+      Sem aparecer, sem impulsionar, sem depender de indicação.
+    </h2>
+
+    <img src="/images/01mockup.webp"
+         alt="Mockup do produto Agenda Cheia"
+         class="mx-auto mb-6 max-w-xs sm:max-w-md w-full rounded-lg shadow-xl">
+
+    <a href="#compra"
+   class="button alt inline-block bg-green-600 text-white font-bold text-2xl shadow-lg uppercase">
+   Quero Lotar <br><span class="text-lg italic underline font-normal uppercase">Minha Agenda Agora</span>
+</a>
+
+  </div>
+</section>
+
+
+<section id="compra" class="bg-[#fdf7ff] text-[#1f1f1f] px-4 py-10 sm:py-14 md:py-16 text-base sm:text-lg leading-relaxed">
+  <div class="max-w-2xl mx-auto text-center space-y-6">
+    <script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/qtwt4kypm8.js" async type="module"></script><style>wistia-player[media-id='qtwt4kypm8']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/qtwt4kypm8/swatch'); display: block; filter: blur(5px); padding-top:177.78%; }</style> <wistia-player media-id="qtwt4kypm8" aspect="0.5625"></wistia-player>
+<!-- Imagem do Print de Reações -->
+        <div class="mt-2 flex justify-center">
+            <picture>
+              <source srcset="images/5clientes.svg" type="image/webp">
+              <img 
+                src="images/5clientes.svg" 
+                alt="Print de Reações" 
+                class="w-full max-w-lg rounded-lg shadow-lg" 
+                loading="lazy" 
+                decoding="async"
+                width="600" 
+                height="338">
+            </picture>
+          </div>
+    <p class="font-medium">
+      Você não precisa ser <span class="font-bold">famosa</span>, fazer <span class="font-bold">live</span> ou ter milhares de <span class="font-bold">seguidores</span> para viver da beleza.
+    </p>
+
+    <p>
+      Tudo o que você precisa é de um <span class="font-semibold">método simples</span>, direto e <span class="font-semibold">testado</span> por quem já passou pelas mesmas dificuldades que você.
+    </p>
+
+    <div class="bg-[#8a2be2] text-white rounded-lg p-6 text-left shadow-md">
+      <p class="font-bold mb-2 text-base sm:text-lg">Mesmo que:</p>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Você esteja começando agora,</li>
+        <li>Tenha medo de se expor,</li>
+        <li>Ou ache que “marketing não é pra você”...</li>
+      </ul>
+    </div>
+
+    <blockquote class="italic text-slate-600 text-base sm:text-lg border-l-4 border-[#8a2be2] pl-4">
+      Em 7 dias, com ações simples de 30 minutos por dia, você pode começar a receber mensagens de clientes dizendo:<br>
+      <span class="block mt-2 font-medium text-[#8a2be2]">“Você tem horário essa semana?”</span>
+    </blockquote>
+
+  </div>
+</section>
+
+
+<section class="bg-[#8A2BE2] text-[#fdf7ff] px-4 py-12 sm:py-16">
+  <div class="max-w-3xl mx-auto text-center">
+
+    <!-- Título com destaque em background amarelo -->
+    <h2 class="text-2xl sm:text-3xl font-extrabold mb-6">
+      O que você vai receber ao entrar no 
+      <span class="inline-block px-2 py-1 rounded-lg bg-[#FFB703] text-[#8A2BE2] font-extrabold">
+        Agenda Cheia em 7 Dias
+      </span>
+    </h2>
+
+    <div class="mt-2 flex justify-center p-4">
+      <picture>
+        <source srcset="images/inovacao.svg" type="image/webp">
+        <img 
+          src="images/inovacao.svg" 
+          alt="Print de Reações" 
+          class="w-full max-w-lg rounded-lg shadow-lg" 
+          loading="lazy" 
+          decoding="async"
+          width="600" 
+          height="338">
+      </picture>
+    </div>
+
+    <p class="text-lg sm:text-xl font-medium leading-relaxed mb-8">
+      Um <span class="font-bold">guia prático e direto</span> que te ensina a atrair 
+      <span class="font-bold">5 clientes em apenas 7 dias</span> — usando só o Instagram e WhatsApp, mesmo começando do zero.
+    </p>
+
+    <!-- Card com fundo branco, borda arredondada e tracejada amarela -->
+    <div class="bg-white rounded-2xl border-2 border-dashed border-[#FFB703] text-[#6B7280] p-6 mb-8 shadow-md text-left space-y-4 text-base sm:text-lg">
+      <p class="flex items-start gap-3">
+        <i class="fas fa-check-circle text-[#ffb703] mt-1"></i>
+        <span><strong class="text-[#8A2BE2]">5 módulos objetivos</strong> com <strong>8 aulas rápidas</strong> que mostram exatamente o que fazer, passo a passo.</span>
+      </p>
+      <p class="flex items-start gap-3">
+        <i class="fas fa-user-edit text-[#ffb703] mt-1"></i>
+        <span>Como <strong>organizar seu perfil</strong> de forma profissional para transmitir confiança e atrair atenção.</span>
+      </p>
+      <p class="flex items-start gap-3">
+        <i class="fas fa-eye-slash text-[#ffb703] mt-1"></i>
+        <span>Técnicas para <strong>atrair clientes sem precisar se expor</strong> nos stories ou gravar vídeos.</span>
+      </p>
+      <p class="flex items-start gap-3">
+        <i class="fas fa-comments text-[#ffb703] mt-1"></i>
+        <span>Modelos de abordagem para <strong>iniciar conversas no WhatsApp</strong> que levam ao agendamento.</span>
+      </p>
+      <p class="flex items-start gap-3">
+        <i class="fas fa-magnet text-[#ffb703] mt-1"></i>
+        <span>Templates de conteúdo magnético mesmo se você tiver <strong>poucos seguidores ou alcance baixo.</strong></span>
+      </p>
+      <p class="flex items-start gap-3">
+        <i class="fas fa-calendar-check text-[#ffb703] mt-1"></i>
+        <span>Uma rotina de vendas leve, <strong>sem complicação</strong>, pra funcionar todos os dias.</span>
+      </p>
+    </div>
+
+    <div class="mt-10 space-y-4 text-base sm:text-lg">
+      <p class="flex items-center justify-center gap-2">
+        <i class="fas fa-cloud-download-alt text-[#ffb703]"></i>
+        <span><strong>Formato 100% online com acesso imediato:</strong> assista onde e quando quiser — direto do celular.</span>
+      </p>
+      <p class="flex items-center justify-center gap-2">
+        <i class="fas fa-bolt text-[#ffb703]"></i>
+        <span><strong>Resultado rápido e realista:</strong> em 7 dias, você vai saber exatamente como ter clientes toda semana com leveza, segurança e constância.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#1F1F1F] text-white px-6 py-12 sm:py-16">
+  <div class="max-w-5xl mx-auto text-center space-y-10">
+
+    <blockquote class="text-lg sm:text-xl font-semibold text-left border-l-4 border-[#FFB703] pl-5 italic">
+      <i class="fa-solid fa-bolt text-[#FFB703] mr-2"></i>
+      <span class="text-[#FDF7FF]">Método validado</span> para atrair 
+      <span class="text-[#FFB703] font-bold">5 clientes em 7 dias</span> usando só Instagram e WhatsApp — 
+      <span class="text-[#6B7280]">sem aparecer, sem impulsionar, sem depender de indicação.</span>
+    </blockquote>
+<div class="mt-2 flex justify-center">
+            <picture>
+              <source srcset="images/clientessemanais.svg" type="image/webp">
+              <img 
+                src="images/clientessemanais.svg" 
+                alt="Print de Reações" 
+                class="w-full max-w-lg rounded-lg shadow-lg" 
+                loading="lazy" 
+                decoding="async"
+                width="600" 
+                height="338">
+            </picture>
+          </div>
+    <div class="grid sm:grid-cols-2 gap-6 text-left text-sm sm:text-base font-medium">
+      <div class="border border-dashed border-[#8A2BE2] p-4 rounded-lg shadow-md bg-[#2A2A2A]">
+        <i class="fa-solid fa-layer-group text-[#8A2BE2] mr-2"></i>
+        <span class="font-bold text-[#FDF7FF]">5 Módulos</span> | <span class="font-bold">8 Aulas Rápidas</span>
+      </div>
+      <div class="border border-dashed border-[#FFB703] p-4 rounded-lg shadow-md bg-[#2A2A2A]">
+        <i class="fa-solid fa-file-lines text-[#FFB703] mr-2"></i>
+        <span class="font-bold">PDFs, Checklists e Planilha de Captação</span>
+      </div>
+      <div class="border border-dashed border-[#FDF7FF] p-4 rounded-lg shadow-md bg-[#2A2A2A]">
+        <i class="fa-solid fa-unlock-keyhole text-[#FDF7FF] mr-2"></i>
+        <span class="font-bold">Acesso imediato e vitalício</span>
+      </div>
+      <div class="border border-dashed border-[#6B7280] p-4 rounded-lg shadow-md bg-[#2A2A2A]">
+        <i class="fa-solid fa-clock text-[#6B7280] mr-2"></i>
+        <span class="font-bold">Resultados com 30 minutos por dia</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center pt-6">
+      <div class="bg-[#8A2BE2] p-4 rounded-lg shadow-lg">
+        <i class="fa-solid fa-video text-3xl text-[#FDF7FF] mb-2"></i>
+        <p class="text-sm font-semibold text-white">Aulas práticas</p>
+      </div>
+      <div class="bg-[#FFB703] p-4 rounded-lg shadow-lg">
+        <i class="fa-solid fa-file-lines text-3xl text-[#1F1F1F] mb-2"></i>
+        <p class="text-sm font-semibold text-[#1F1F1F]">Modelos prontos</p>
+      </div>
+      <div class="bg-[#FDF7FF] p-4 rounded-lg shadow-lg">
+        <i class="fa-solid fa-chart-line text-3xl text-[#8A2BE2] mb-2"></i>
+        <p class="text-sm font-semibold text-[#1F1F1F]">Rotina semanal</p>
+      </div>
+      <div class="bg-[#6B7280] p-4 rounded-lg shadow-lg">
+        <i class="fa-solid fa-mobile-screen-button text-3xl text-white mb-2"></i>
+        <p class="text-sm font-semibold text-white">Aplicável no celular</p>
+      </div>
+    </div>
+
+    <p class="mt-8 text-base sm:text-lg font-medium text-[#FDF7FF] max-w-3xl mx-auto">
+      <i class="fa-solid fa-comment-dots text-[#FFB703] mr-2"></i>
+      Tudo o que você precisa para <span class="font-bold text-[#FFB703]">atrair clientes esta semana</span> — com conteúdo pronto, abordagem validada e uma rotina leve que cabe no seu dia.
+    </p>
+
+  </div>
+</section>
+
+
+<section class="bg-[#FDF7FF] text-[#1F1F1F] px-6 py-14 sm:py-20 text-center">
+  <div class="max-w-3xl mx-auto space-y-8">
+
+    <h2 class="text-2xl sm:text-3xl font-extrabold">
+      Pronta pra começar a lotar sua agenda ainda essa semana?
+    </h2>
+
+    <blockquote class="text-base sm:text-lg font-medium italic border-l-4 border-[#FFB703] pl-4 text-left">
+      <i class="fa-solid fa-credit-card text-[#FFB703] mr-2"></i>
+      <strong>Acesse agora o Guia por apenas <span class="text-[#8A2BE2] font-bold">R$47</span></strong><br>
+      Sem mensalidade. Sem pegadinhas. Acesso por 6 meses.
+    </blockquote>
+
+    <p class="text-sm sm:text-base font-medium text-gray-700">
+      <i class="fa-solid fa-lock mr-1 text-[#6B7280]"></i> Compra segura &nbsp;&nbsp;|&nbsp;&nbsp;
+      <i class="fa-solid fa-bolt mr-1 text-[#6B7280]"></i> Entrega imediata &nbsp;&nbsp;|&nbsp;&nbsp;
+      <i class="fa-solid fa-shield-check mr-1 text-[#6B7280]"></i> Garantia de 7 dias
+    </p>
+
+    <a href="#compra" class="button alt inline-block mt-4 sm:mt-6">
+      <i class="fa-solid fa-check-circle mr-2"></i> SIM! QUERO TER 5 CLIENTES EM 7 DIAS
+    </a>
+
+  </div>
+</section>
+
+<section class="min-h-[530px] flex flex-col items-center justify-center px-2 py-14 bg-[#23282C]">
+  <!-- Destaque quantidade de reviews -->
+  <div class="text-center mb-12">
+    <span class="text-white text-5xl font-black drop-shadow-xl tracking-widest block">812</span>
+    <span class="text-[#FDF7FF] text-2xl font-bold uppercase tracking-wider block">
+     Avaliações
+    </span>
+  </div>
+
+  <!-- Carrossel animado -->
+  <div class="carrossel-externo w-full max-w-[1240px] mx-auto relative">
+    <div class="carrossel-interno py-2">
+      <!-- CARD 1 -->
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">03/07/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Camila S.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Agenda lotada em 5 dias</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Segui o passo a passo da Estratégiae consegui fechar 7 clientes em menos de uma semana, sem precisar aparecer."
+        </div>
+      </div>
+      <!-- CARD 2 -->
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">27/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Larissa F.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Primeira cliente sem indicação</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Apliquei as mensagens prontas e recebi pedido no mesmo dia. Nunca tinha conseguido sem indicação!"
+        </div>
+      </div>
+      <!-- CARD 3 -->
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">21/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Fernanda P.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Mais confiança para vender</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "O checklist diário me ajudou a criar rotina. Agora vendo todos os dias, sem precisar dar desconto."
+        </div>
+      </div>
+      <!-- CARD 4 -->
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">19/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Aline R.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Saí do zero em uma semana</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Tinha medo de vender pelo Instagram, mas com o método, consegui lotar minha agenda começando do zero."
+        </div>
+      </div>
+      <!-- CARD 5 -->
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">15/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Juliana K.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Método prático e rápido</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Apliquei as estratégias em menos de 30 minutos por dia. Nunca foi tão simples conseguir novas clientes."
+        </div>
+      </div>
+      <!-- CARDS DUPLICADOS para loop -->
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">03/07/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Camila S.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Agenda lotada em 5 dias</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Segui o passo a passo do Estratégiae consegui fechar 7 clientes em menos de uma semana, sem precisar aparecer."
+        </div>
+      </div>
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">27/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Larissa F.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Primeira cliente sem indicação</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Apliquei as mensagens prontas e recebi pedido no mesmo dia. Nunca tinha conseguido sem indicação!"
+        </div>
+      </div>
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">21/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Fernanda P.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Mais confiança para vender</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "O checklist diário me ajudou a criar rotina. Agora vendo todos os dias, sem precisar dar desconto."
+        </div>
+      </div>
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">19/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Aline R.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Saí do zero em uma semana</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Tinha medo de vender pelo Instagram, mas com o método, consegui lotar minha agenda começando do zero."
+        </div>
+      </div>
+      <div class="card-review">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs text-[#98A6AD]">15/06/25</span>
+          <span class="verificado">✔ Verificado</span>
+        </div>
+        <div class="font-bold text-base text-[#FDF7FF]">Juliana K.</div>
+        <div class="flex items-center space-x-1 text-[#FFB703] text-sm my-1">★★★★★</div>
+        <div class="font-bold text-white mb-1">Método prático e rápido</div>
+        <div class="text-sm text-[#BAC1C9] leading-tight">
+          "Apliquei as estratégias em menos de 30 minutos por dia. Nunca foi tão simples conseguir novas clientes."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .carrossel-externo {
+      overflow-x: hidden;
+      position: relative;
+      /* Fade nas laterais */
+      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+    .carrossel-interno {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: carrossel-scroll 56s linear infinite;
+    }
+    @keyframes carrossel-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (max-width: 640px) {
+      .carrossel-interno { gap: 14px; }
+      .card-review { min-width: 90vw; max-width: 92vw; }
+    }
+    .card-review {
+      background: #2a2f35;
+      border: 1px solid #353A3F;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px -8px rgba(20,20,20,0.17);
+      padding: 20px 18px;
+      min-width: 300px;
+      max-width: 300px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .card-review:hover {
+      transform: scale(1.04);
+      box-shadow: 0 12px 44px -8px #0006;
+    }
+    .verificado {
+      font-size: 13px;
+      color: #6FE289;
+      background: #212b22;
+      padding: 2px 7px 2px 5px;
+      border-radius: 7px;
+      margin-left: 6px;
+      font-weight: 600;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  </style>
+</section>
+
+
+<section class="bg-[#fdf7ff] text-[#1F1F1F] px-6 py-20 relative overflow-hidden">
+  <!-- Pattern decorativo -->
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-10 z-0"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto space-y-12">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center text-[#8A2BE2]">
+      SEM DESCULPAS! Você só precisa de <u>um celular</u> e <u>30 minutos por dia</u>.
+    </h2>
+
+    <p class="text-center italic font-medium max-w-3xl mx-auto text-[#4E342E] text-lg">
+      <span class="line-through text-[#B29D79]">Seguidoras</span>,
+      <span class="line-through text-[#B29D79]">câmera boa</span>,
+      <span class="line-through text-[#B29D79]">dancinha</span>...  
+      <br>
+      Nada disso é necessário aqui — <strong class="text-[#2E7D32]">o que você precisa é de um método direto.</strong>
+    </p>
+
+    <!-- Cards -->
+    <div class="grid sm:grid-cols-2 gap-8 text-base sm:text-lg font-medium leading-relaxed">
+
+      <!-- Card 1 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border-l-[6px] border-[#8A2BE2] relative">
+        <div class="absolute -top-4 -left-4 text-[#8A2BE2] text-3xl">
+          <i class="fa-solid fa-user-group"></i>
+        </div>
+        <h3 class="font-bold text-[#8A2BE2] mb-2">“Tenho poucos seguidores…”</h3>
+        <p><span class="text-[#4E342E]">Perfeito!</span> O método foi feito para funcionar <strong>mesmo com perfil pequeno</strong>.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border-l-[6px] border-[#2E7D32] relative">
+        <div class="absolute -top-4 -left-4 text-[#2E7D32] text-3xl">
+          <i class="fa-solid fa-eye-slash"></i>
+        </div>
+        <h3 class="font-bold text-[#2E7D32] mb-2">“Tenho vergonha de aparecer…”</h3>
+        <p><span class="text-[#4E342E]">Ótimo!</span> Você vai vender <em>sem precisar mostrar o rosto</em>.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border-l-[6px] border-[#FFB703] relative">
+        <div class="absolute -top-4 -left-4 text-[#FFB703] text-3xl">
+          <i class="fa-solid fa-store"></i>
+        </div>
+        <h3 class="font-bold text-[#FFB703] mb-2">“Nunca vendi pelo Instagram…”</h3>
+        <p><span class="text-[#4E342E]">Sem problema!</span> Você vai seguir um <strong>passo a passo validado</strong>, com tudo pronto.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white p-6 rounded-xl shadow-lg border-l-[6px] border-[#B29D79] relative">
+        <div class="absolute -top-4 -left-4 text-[#B29D79] text-3xl">
+          <i class="fa-solid fa-gear"></i>
+        </div>
+        <h3 class="font-bold text-[#B29D79] mb-2">“Não sou boa com tecnologia…”</h3>
+        <p>Se você sabe usar WhatsApp e Instagram, <strong class="text-[#4E342E]">você já consegue aplicar o método.</strong></p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="sm:col-span-2 bg-white p-6 rounded-xl shadow-lg border-l-[6px] border-[#FF0700] relative">
+        <div class="absolute -top-4 -left-4 text-[#FF0700] text-3xl">
+          <i class="fa-solid fa-comment-dots"></i>
+        </div>
+        <h3 class="font-bold text-[#FF0700] mb-2">“Não sei o que postar ou o que dizer…”</h3>
+        <p><span class="text-[#4E342E] font-semibold">Isso já vem pronto:</span> você vai receber <u>textos, modelos e roteiros</u> prontos pra copiar e colar.</p>
+      </div>
+    </div>
+
+    <!-- Frase Final -->
+    <div class="text-center mt-12 max-w-3xl mx-auto">
+      <blockquote class="text-[#4E342E] italic font-semibold border-l-4 border-[#8A2BE2] pl-4 text-lg sm:text-xl leading-relaxed">
+        <i class="fa-solid fa-bolt mr-2 text-[#FF0700]"></i>
+        Essa Estratégianão é pra quem só quer assistir.<br>
+        É pra quem quer aplicar e <span class="underline text-[#2E7D32] font-bold">ver resultado em 7 dias</span>.
+      </blockquote>
+      
+    </div>
+    
+  </div>
+  
+</section>
+
+<section class="bg-[#1F1F1F] text-white px-6 py-20">
+  <div class="max-w-3xl mx-auto text-center space-y-8">
+
+    <!-- Headline -->
+    <h2 class="text-3xl sm:text-4xl font-extrabold leading-snug text-[#FFB703]">
+      <i class="fa-solid fa-bullseye-arrow mr-2 text-[#FF0700]"></i>
+      Pronta pra parar de depender da sorte e <u>lotar sua agenda com estratégia</u>?
+    </h2>
+
+    <!-- Subheadline -->
+    <div class="bg-[#8A2BE2]/10 border border-[#8A2BE2]/30 rounded-lg px-6 py-6">
+      <h3 class="text-lg sm:text-xl font-bold mb-2 text-[#B29D79]">
+        <i class="fa-solid fa-mobile-screen-button text-[#B29D79] mr-2"></i>
+        Garanta agora seu acesso ao Estratégiapor apenas <span class="text-[#FF0700] font-extrabold">R$47</span>
+      </h3>
+      <p class="text-sm sm:text-base font-medium text-[#E0E0E2]">
+        Acesso vitalício • Entrega imediata • Método validado
+      </p>
+    </div>
+
+    <!-- Botão -->
+    <a href="#compra"
+       class="button alt inline-block text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full bg-[#2E7D32] hover:bg-[#1b5e20] shadow-xl transition-all duration-300 ease-in-out">
+      <i class="fa-solid fa-circle-check mr-2"></i>
+      SIM! QUERO ATRAIR CLIENTES TODA SEMANA
+    </a>
+
+    <!-- Subcopy -->
+    <p class="text-sm sm:text-base text-[#E0E0E2] mt-2">
+      <i class="fa-solid fa-eye-slash mr-1 text-[#FFB703]"></i>
+      Sem precisar aparecer, fazer live ou depender de indicação.
+    </p>
+
+    <!-- Garantias -->
+    <div class="flex flex-wrap justify-center gap-4 text-sm sm:text-base font-medium text-[#E0E0E2] pt-6">
+      <span class="flex items-center gap-2"><i class="fa-solid fa-lock text-[#FF0700]"></i> Compra 100% segura</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-[#FF0700]"></i> Garantia de 7 dias</span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-mobile text-[#FF0700]"></i> Acesso pelo celular</span>
+    </div>
+  </div>
+</section>
+<section class="bg-[#FDF7FF] text-[#1F1F1F] px-6 py-20">
+  <div class="max-w-5xl mx-auto space-y-12">
+
+    <!-- Título principal -->
+    <div class="text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#8A2BE2] mb-2 uppercase tracking-tight">
+        BÔNUS EXCLUSIVOS
+      </h2>
+      <p class="text-base sm:text-lg text-[#4E342E]">Liberados somente para quem garantir agora</p>
+    </div>
+<!-- Bônus 1 (100% responsivo) -->
+<div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 border-l-4 border-[#B29D79] bg-white shadow-md rounded-xl p-5 sm:p-8">
+  <div class="w-full sm:w-1/3 flex items-center justify-center mb-4 sm:mb-0">
+    <img 
+      src="images/mockup-30textos.webp" 
+      alt="Mockup do eBook 30 Textos Prontos" 
+      class="max-w-[220px] sm:max-w-full w-full h-auto rounded-lg shadow-sm" 
+      loading="lazy">
+  </div>
+  <div class="w-full sm:w-2/3 text-center sm:text-left">
+    <h3 class="text-xl font-bold mb-2">
+      Bônus 1 – eBook: <span class="underline underline-offset-2">30 Textos Prontos para WhatsApp e Direct</span>
+    </h3>
+    <ul class="list-disc list-inside text-base text-[#1F1F1F] mb-2 space-y-1">
+      <li>Iniciar conversas com clientes novas e antigas</li>
+      <li>Confirmar agendamentos com segurança</li>
+      <li>Reativar quem sumiu sem parecer insistente</li>
+      <li>Responder dúvidas com profissionalismo</li>
+      <li>Pedir depoimentos e gerar indicações</li>
+    </ul>
+    <p class="text-sm font-semibold text-[#FF0700]">
+      Valor real: R$59 — <span class="text-[#2E7D32] font-bold">Você recebe de graça!</span>
+    </p>
+  </div>
+</div>
+<!-- Bônus 2 (100% responsivo) -->
+<div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 border-l-4 border-[#FFB703] bg-white shadow-md rounded-xl p-5 sm:p-8">
+  <div class="w-full sm:w-1/3 flex items-center justify-center mb-4 sm:mb-0">
+    <img 
+      src="images/checklistdiario.webp" 
+      alt="Mockup do Checklist Diário da Captação" 
+      class="max-w-[220px] sm:max-w-full w-full h-auto rounded-lg shadow-sm" 
+      loading="lazy">
+  </div>
+  <div class="w-full sm:w-2/3 text-center sm:text-left">
+    <h3 class="text-xl font-bold mb-2">
+      Bônus 2 – Checklist Diário da Captação
+    </h3>
+    <ul class="list-disc list-inside text-base text-[#1F1F1F] mb-2 space-y-1">
+      <li>Essencial • Ideal • Extra – dividido por nível</li>
+      <li>Motivacional + espaço para marcar progresso</li>
+      <li>Cria disciplina sem pesar na rotina</li>
+    </ul>
+    <p class="text-sm font-semibold text-[#FF0700]">
+      Valor real: R$39 — <span class="text-[#2E7D32] font-bold">Incluso gratuitamente!</span>
+    </p>
+  </div>
+</div>
+
+<!-- Bônus 3 (100% responsivo) -->
+<div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 border-l-4 border-[#2E7D32] bg-white shadow-md rounded-xl p-5 sm:p-8">
+  <div class="w-full sm:w-1/3 flex items-center justify-center mb-4 sm:mb-0">
+    <img 
+      src="images/postsecreto.webp" 
+      alt="Mockup do Modelo de Post Secreto" 
+      class="max-w-[220px] sm:max-w-full w-full h-auto rounded-lg shadow-sm" 
+      loading="lazy">
+  </div>
+  <div class="w-full sm:w-2/3 text-center sm:text-left">
+    <h3 class="text-xl font-bold mb-2">Bônus 3 – Modelo de Post Secreto + Variações por Nicho</h3>
+    <ul class="list-disc list-inside text-base text-[#1F1F1F] mb-2 space-y-1">
+      <li>Estrutura magnética: gancho + transformação + convite</li>
+      <li>10 versões prontas por nicho</li>
+      <li>5 roteiros de stories com CTA para agendamento</li>
+    </ul>
+    <p class="text-sm font-semibold text-[#FF0700]">
+      Valor real: R$47 — <span class="text-[#2E7D32] font-bold">100% gratuito no seu acesso!</span>
+    </p>
+  </div>
+</div>
+
+
+    <!-- Aviso final -->
+    <div class="text-center mt-10 border-t border-dashed border-[#B29D79] pt-6">
+      <p class="text-lg sm:text-xl font-semibold text-[#4E342E]">
+        Somando tudo, são <span class="font-extrabold text-[#FF0700]">R$145 em bônus</span> — liberados <u>somente hoje</u>.
+      </p>
+      <a href="#compra" class="button alt inline-block mt-4 sm:mt-6">
+      <i class="fa-solid fa-check-circle mr-2"></i> SIM! QUERO TER 5 CLIENTES EM 7 DIAS
+    </a>
+    </div>
+
+  </div>
+</section>
+<section class="bg-white px-6 py-20 text-[#1F1F1F]">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Título -->
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-10 leading-snug">
+      Veja o <span class="bg-[#FFB703] px-2 rounded">valor real</span> de tudo que você vai receber — 
+      <br class="hidden sm:block">
+      <span class="bg-[#8A2BE2] text-white px-2 rounded">e o quanto você economiza hoje</span>
+    </h2>
+
+    <!-- Tabela -->
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse shadow-xl rounded-xl overflow-hidden bg-[#FDF7FF] text-sm sm:text-base">
+        <thead>
+          <tr class="bg-[#8A2BE2] text-white">
+            <th class="px-4 py-4 font-semibold uppercase tracking-wider">Entregável</th>
+            <th class="px-4 py-4 font-semibold text-right uppercase tracking-wider">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-[#e0e0e2]">
+            <td class="px-4 py-3 font-medium"><i class="fa-solid fa-check-circle mr-1 text-[#2E7D32]"></i><strong>Estratégiacompleto</strong> <em>(5 módulos, 8 aulas)</em></td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$197</span><br>
+              <span class="text-[#2E7D32] font-semibold">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr class="bg-white/60">
+            <td class="px-4 py-3"><i class="fa-solid fa-check-circle mr-1 text-[#2E7D32]"></i><u>PDF:</u> <strong>“7 Mentiras que Travam sua Agenda”</strong></td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$27</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3"><i class="fa-solid fa-check-circle mr-1 text-[#2E7D32]"></i><u>Checklist:</u> <strong>“3 Atitudes Diárias”</strong></td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$29</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr class="bg-white/60">
+            <td class="px-4 py-3"><i class="fa-solid fa-check-circle mr-1 text-[#2E7D32]"></i><strong>Checklist do Perfil Magnético</strong></td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$37</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3"><i class="fa-solid fa-check-circle mr-1 text-[#2E7D32]"></i><strong>Planilha:</strong> <em>Rotina de Captação</em></td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$47</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr class="bg-white/60">
+            <td class="px-4 py-3"><i class="fa-solid fa-check-circle mr-1 text-[#2E7D32]"></i><strong>Modelo de Post Secreto + Stories</strong></td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$59</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">
+              <span class="text-[#B71C1C]"><i class="fa-solid fa-gift mr-1 text-[#B71C1C]"></i>Bônus:</span> Textos Prontos WhatsApp
+            </td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$59</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr class="bg-white/60">
+            <td class="px-4 py-3 font-semibold">
+              <span class="text-[#B71C1C]"><i class="fa-solid fa-gift mr-1 text-[#B71C1C]"></i>Bônus:</span> Checklist Diário
+            </td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$39</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3 font-semibold">
+              <span class="text-[#B71C1C]"><i class="fa-solid fa-gift mr-1 text-[#B71C1C]"></i>Bônus:</span> Post Secreto Expandido
+            </td>
+            <td class="px-4 py-3 text-right">
+              <span class="line-through text-[#B71C1C]">R$47</span><br>
+              <span class="text-[#2E7D32]">Incluso hoje!</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Valor total + Oferta -->
+    <div class="mt-10 text-center space-y-4">
+      <p class="text-xl sm:text-2xl font-bold text-[#4E342E]">
+        <span class="inline-block px-3 py-1 rounded bg-[#FFB703] shadow-sm">
+          Valor total real: R$541
+        </span>
+      </p>
+      <p class="text-2xl sm:text-3xl font-extrabold text-[#2E7D32]">
+        Mas você garante tudo por apenas <span class="underline decoration-dotted underline-offset-4"><br>R$47</span>
+      </p>
+      <a href="#compra" class="button alt inline-block mt-4 sm:mt-6">
+      <i class="fa-solid fa-check-circle mr-2"></i> SIM! QUERO TER 5 CLIENTES EM 7 DIAS
+    </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="bg-[#FDF7FF] px-6 py-20 text-[#1F1F1F]">
+  <div class="max-w-3xl mx-auto space-y-10">
+
+    <!-- Título -->
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center leading-snug mb-4">
+      Ainda tá em <span class="bg-[#FFB703] px-2 rounded">dúvida</span> se essa Estratégiaé pra você?
+    </h2>
+
+    <p class="text-center text-base sm:text-lg text-[#4E342E] italic">
+      Faça esse <u>checklist mental</u> e descubra:
+    </p>
+
+    <!-- Checklist -->
+    <ul class="space-y-4">
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base"><strong>Você posta no Instagram</strong>, mas ninguém chama no direct</span>
+      </li>
+
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base">Você <strong>depende de indicação</strong> e sente que sua agenda é instável</span>
+      </li>
+
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base">Você <strong>trava na hora de vender</strong>, com medo de parecer forçada</span>
+      </li>
+
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base"><strong>Você tem poucos seguidores</strong> e acha que isso te limita</span>
+      </li>
+
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base">Você sente que <u>faz tudo certo</u>... mas o <strong>resultado não vem</strong></span>
+      </li>
+
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base">Você <strong>ama o que faz</strong>, mas quer viver da beleza com mais segurança</span>
+      </li>
+
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base">Você quer um <strong>passo a passo leve, prático e possível</strong> de aplicar no dia a dia</span>
+      </li>
+
+      <li class="flex items-start gap-3 bg-white border border-[#E0E0E2] p-4 rounded-xl shadow-sm">
+        <i class="fa-solid fa-circle-check text-[#2E7D32] mt-1"></i>
+        <span class="text-sm sm:text-base">Você só quer <u><strong>alguém que te diga o que fazer</strong></u> — sem enrolação</span>
+      </li>
+    </ul>
+
+    <!-- Frase final -->
+    <div class="bg-[#8A2BE2] text-white text-center px-6 py-6 mt-10 rounded-xl shadow-md">
+      <p class="text-lg sm:text-xl font-semibold leading-relaxed">
+        Se você marcou <u>2 ou mais</u> desses itens,<br>
+        o <strong>“Agenda Cheia em 7 Dias”</strong> foi feito exatamente pra você.
+      </p>
+      <p class="mt-2 text-sm italic text-[#FDF7FF]">
+        E quanto antes você aplicar, mais rápido sua agenda começa a mudar.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="bg-[#F4F4F4] px-6 py-20 text-[#1F1F1F]">
+  <div class="max-w-5xl mx-auto space-y-12">
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center leading-snug">
+      Perguntas Frequentes
+    </h2>
+
+    <div class="grid sm:grid-cols-2 gap-6 sm:gap-10">
+
+      <!-- Item 1 -->
+      <div class="bg-white border border-[#E0E0E2] rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-2">
+          <i class="fa-solid fa-eye-slash text-[#8A2BE2] mr-2"></i> Preciso aparecer nos stories ou gravar vídeos pra aplicar o método?
+        </h3>
+        <p class="text-sm leading-relaxed">
+          <strong>Não!</strong> O método foi criado para funcionar <u>sem exposição</u>.  
+          Você vai atrair clientes com conteúdo estratégico, posts prontos e mensagens no WhatsApp — tudo <strong>sem mostrar o rosto</strong>.
+        </p>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="bg-white border border-[#E0E0E2] rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-2">
+          <i class="fa-solid fa-user-group text-[#FFB703] mr-2"></i> Tenho poucos seguidores, isso atrapalha?
+        </h3>
+        <p class="text-sm leading-relaxed">
+          <strong>De forma alguma.</strong> Essa Estratégiaé ideal para quem tem <u>perfil pequeno</u> ou pouco engajamento.  
+          O que importa é <strong>o que você posta e como conversa</strong> com suas clientes.
+        </p>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="bg-white border border-[#E0E0E2] rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-2">
+          <i class="fa-solid fa-lightbulb text-[#2E7D32] mr-2"></i> Não entendo nada de marketing. Vou conseguir aplicar?
+        </h3>
+        <p class="text-sm leading-relaxed">
+          <strong>Sim!</strong> O conteúdo é simples, prático e direto ao ponto.  
+          Você recebe <strong>checklists, frases prontas e modelos editáveis</strong> — sem enrolação.
+        </p>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="bg-white border border-[#E0E0E2] rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-2">
+          <i class="fa-solid fa-bullhorn text-[#C62828] mr-2"></i> Preciso investir em anúncios?
+        </h3>
+        <p class="text-sm leading-relaxed">
+          <strong>Não.</strong> O método é <u>100% orgânico</u>, criado para funcionar só com <strong>Instagram e WhatsApp</strong> — sem precisar gastar com impulsionamento.
+        </p>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="bg-white border border-[#E0E0E2] rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-2">
+          <i class="fa-solid fa-clock text-[#8A2BE2] mr-2"></i> É um Estratégiagrande? Tenho pouco tempo…
+        </h3>
+        <p class="text-sm leading-relaxed">
+          <strong>Não.</strong> São apenas <strong>8 aulas curtas</strong>, com duração de 2 a 4 minutos.  
+          Você pode assistir no seu ritmo — <u>direto do celular</u>.
+        </p>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="bg-white border border-[#E0E0E2] rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-2">
+          <i class="fa-solid fa-shield-check text-[#1B998B] mr-2"></i> Tenho medo de comprar e não conseguir aplicar…
+        </h3>
+        <p class="text-sm leading-relaxed">
+          Por isso, você recebe <strong>PDFs de apoio, roteiros diários e uma planilha de rotina</strong>.  
+          E mais: tem <u>7 dias de garantia total</u> pra testar com segurança.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#1F1F1F] text-white px-6 py-20 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto space-y-10 text-center">
+
+    <!-- Destaque visual com selo -->
+    <div class="inline-block border-4 border-[#FFB703] px-6 py-2 rounded-full font-bold text-sm tracking-widest uppercase bg-[#8A2BE2] text-white shadow-lg">
+      Garantia 100% Livre de Riscos
+    </div>
+
+    <!-- Bloco de confiança -->
+    <p class="text-lg sm:text-xl font-medium leading-relaxed max-w-3xl mx-auto mt-6">
+      Você tem <span class="text-[#FFB703] font-bold underline underline-offset-2">7 dias inteiros</span> pra testar o Curso, assistir às aulas, aplicar as estratégias e usar os bônus.
+    </p>
+
+    <p class="text-base sm:text-lg leading-relaxed max-w-3xl mx-auto text-[#E0E0E2]">
+      Se nesse prazo você sentir que <strong class="text-white">não é pra você</strong>, ou que <span class="italic text-[#FF6B6B]">não valeu cada centavo</span>,  
+      basta enviar um e-mail e faremos o reembolso <span class="font-bold text-[#1B998B]">na hora</span> — <u>sem letras miúdas</u>, sem estresse.
+    </p>
+
+    <!-- Frase de impacto -->
+    <blockquote class="mt-10 px-6 py-6 border-l-4 border-[#FFB703] bg-white/10 backdrop-blur-sm rounded-md font-semibold italic text-[#FFB703] text-lg leading-relaxed">
+      Ou funciona pra você… ou você não perde nada.
+    </blockquote>
+
+    <!-- Frase final -->
+    <p class="mt-6 text-sm text-[#B0B0B0]">
+      Confiança total na entrega. Porque quem aplica, tem resultado.  
+      E se não aplicar, não paga.
+    </p>
+  </div>
+</section>
+
+<section class="bg-[#FDF7FF] text-[#1F1F1F] px-6 py-20">
+  <div class="max-w-4xl mx-auto space-y-12">
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center leading-snug">
+      Tem mais alguma dúvida? <span class="bg-[#FFB703] px-2 rounded-md">Aqui vai um reforço:</span>
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 text-base sm:text-lg leading-relaxed font-medium">
+
+      <div class="bg-white rounded-xl shadow-md border-l-4 border-[#8A2BE2] p-6">
+        <h3 class="font-bold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-envelope-circle-check text-[#8A2BE2]"></i>
+          Por onde eu acesso a Estratégiadepois da compra?
+        </h3>
+        <p>Assim que o pagamento for confirmado, você recebe <strong>o acesso imediato por e-mail</strong> com todas as instruções.  
+        Pode assistir do celular, computador ou tablet — quando e onde quiser.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md border-l-4 border-[#1B998B] p-6">
+        <h3 class="font-bold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-infinity text-[#1B998B]"></i>
+          O acesso é meu pra sempre?
+        </h3>
+        <p>Sim! O acesso é <strong>vitalício</strong>. Você pode voltar sempre que quiser revisar, reaplicar ou pegar os materiais.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md border-l-4 border-[#FF6B6B] p-6">
+        <h3 class="font-bold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-headset text-[#FF6B6B]"></i>
+          Tem suporte se eu tiver alguma dificuldade?
+        </h3>
+        <p>Sim! Na própria plataforma você terá <strong>um canal direto pra tirar dúvidas técnicas</strong> e resolver qualquer dificuldade de acesso.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md border-l-4 border-[#FFB703] p-6">
+        <h3 class="font-bold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-mobile-screen text-[#FFB703]"></i>
+          Precisa baixar algum programa?
+        </h3>
+        <p>Não. A Estratégiaé <strong>100% online</strong>. Basta ter conexão com a internet e você consegue aplicar tudo do celular, sem complicação.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md border-l-4 border-[#8A2BE2] sm:col-span-2 p-6">
+        <h3 class="font-bold mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-heart-pulse text-[#8A2BE2]"></i>
+          Esse método funciona pra qualquer nicho da beleza?
+        </h3>
+        <p>Sim! O método foi validado com <strong>manicure, designer de sobrancelhas, lash designer, esteticista, depiladora, bronzeadora, micropigmentadora</strong> e mais.  
+        Os <strong>bônus trazem variações por nicho</strong> pra facilitar ainda mais sua aplicação.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#2e003e] text-white px-6 py-20">
+  <div class="max-w-4xl mx-auto space-y-14">
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center leading-snug mb-10">
+      E se você <span class="bg-[#FF6B6B] px-2 rounded-md font-bold">não</span> aproveitar essa oportunidade?
+    </h2>
+
+    <div class="space-y-8 text-base sm:text-lg font-medium leading-relaxed">
+
+      <div class="bg-white/10 border-l-4 border-[#FF6B6B] rounded-md p-5">
+        <h3 class="font-bold text-[#FFB703]">❌ Você vai continuar postando sem saber o que está fazendo errado</h3>
+        <p class="italic">E cada post que ninguém responde… <u>é uma cliente a menos</u>.</p>
+      </div>
+
+      <div class="bg-white/10 border-l-4 border-[#8A2BE2] rounded-md p-5">
+        <h3 class="font-bold text-[#FFB703]">❌ Vai continuar esperando indicações, achando que sorte é estratégia</h3>
+        <p class="italic">Enquanto outras profissionais com menos experiência estão lotadas — <strong>só porque aplicaram o método certo</strong>.</p>
+      </div>
+
+      <div class="bg-white/10 border-l-4 border-[#1B998B] rounded-md p-5">
+        <h3 class="font-bold text-[#FFB703]">❌ Vai seguir travando na hora de vender</h3>
+        <p class="italic">Porque ninguém te ensinou o que dizer no direct, nos stories ou no WhatsApp.</p>
+      </div>
+
+      <div class="bg-white/10 border-l-4 border-[#FF6B6B] rounded-md p-5">
+        <h3 class="font-bold text-[#FFB703]">❌ Vai perder tempo testando sozinha</h3>
+        <p class="italic">Quando poderia estar aplicando um plano validado, com tudo pronto, por <span class="line-through text-[#FF6B6B]">R$197</span> <strong class="text-[#1B998B]">menos do que o valor de uma unha em gel</strong>.</p>
+      </div>
+
+      <div class="bg-white/10 border-l-4 border-[#8A2BE2] rounded-md p-5">
+        <h3 class="font-bold text-[#FFB703]">❌ Vai continuar com aquela sensação de “eu sou boa… mas ninguém me vê”</h3>
+        <p class="italic">Isso não é culpa sua. Mas <strong><u>só você pode mudar esse jogo</u></strong> — e agora você tem como.</p>
+      </div>
+
+    </div>
+
+    <!-- Bloco final de virada -->
+    <div class="bg-[#1F1F1F] rounded-2xl text-center p-8 shadow-xl mt-16 space-y-6">
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-[#FFB703]">
+        Com R$47 e 30 minutos por dia,<br>
+        você pode <u>mudar sua semana inteira</u>.
+      </h3>
+      <p class="text-lg sm:text-xl italic">Não é mágica. <br>Não é sorte. <br><strong>É um método.</strong><br>E agora ele tá disponível pra você.</p>
+    </div>
+
+    <!-- Lembrete final -->
+    <div class="text-center mt-12">
+      <h4 class="text-xl sm:text-2xl font-bold tracking-tight text-[#FFFFFF] mb-3">
+        Último lembrete antes do botão final:
+      </h4>
+      <p class="italic text-base sm:text-lg text-[#FFB703]">
+        <strong>Quem tem estratégia, atrai cliente.<br>Quem não tem, vive de tentativa e erro.</strong>
+      </p>
+    </div>
+
+    <!-- Botão final -->
+    <div class="text-center mt-10">
+      <a href="#checkout" class="inline-block px-8 py-4 text-lg font-bold rounded-full shadow-lg text-white bg-[#8A2BE2] hover:bg-[#6c1bb4] transition">
+        ✅ QUERO COMEÇAR AGORA E LOTAR MINHA AGENDA
+      </a>
+      <p class="text-sm text-white mt-2">Sem precisar aparecer, fazer live ou depender de indicação.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="precos" class="bg-gray-50 text-gray-800 py-16 px-6 md:px-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- PLANO BÁSICO -->
+      <div class="bg-white text-gray-900 border-2 border-dashed border-blue-500 rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-extrabold text-blue-700 mb-4 text-center uppercase tracking-wide">
+          Plano Essencial
+        </h3>
+        <img src="images/01mockup.webp" alt="Plano Essencial" class="w-full max-w-sm mx-auto rounded-md mb-4" loading="lazy">
+
+        <ul class="text-sm text-gray-700 space-y-2 mb-6">
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+            <span>Acesso completo a Estratégia<strong>“Agenda Cheia em 7 Dias”</strong> (5 módulos + 8 aulas curtas)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+            <span>PDF exclusivo: <em>“7 Mentiras que Travam sua Agenda”</em></span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+            <span>Checklist: <strong>“3 Atitudes Diárias”</strong> para atrair clientes</span>
+          </li>
+        </ul>
+
+        <div class="text-center mb-6">
+          <p class="text-sm text-gray-700">De <span class="line-through text-red-600 font-semibold">R$197,00</span></p>
+          <p class="text-4xl font-extrabold text-green-600 my-1">R$47,00</p>
+          <p class="text-sm text-gray-600 italic">Acesso por 6 meses • Sem mensalidade</p>
+        </div>
+
+        <a href="https://pay.agendainfinita.website/checkout/essencial" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg py-3 px-6 rounded shadow-md transition duration-300 w-full text-center">
+          QUERO COMEÇAR COM O ESSENCIAL
+          <span class="block text-sm font-normal mt-1">Acesso imediato</span>
+        </a>
+      </div>
+
+      <!-- PLANO COMPLETO -->
+      <div class="bg-white border-2 border-dashed border-purple-600 rounded-xl p-6 shadow-lg relative">
+        <div class="absolute -top-4 right-4 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+          RECOMENDADO
+        </div>
+
+        <h3 class="bg-[#facc15] text-gray-900 text-xl font-extrabold px-6 py-2 rounded-xl text-center mb-4 shadow-md uppercase tracking-wide">
+          Plano Completo
+        </h3>
+
+        <p class="text-green-700 font-bold mb-4 text-center">Tudo incluso + Bônus Premium</p>
+        <img src="images/01mockup.webp" alt="Plano Completo" class="w-full rounded-md mb-4" loading="lazy">
+
+        <ul class="text-sm text-gray-800 mb-6 space-y-3 text-left">
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+            <div>
+              <p class="font-bold">Estratégia“Agenda Cheia em 7 Dias”</p>
+              <p>5 módulos + 8 aulas práticas (sem enrolação)</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+            <div>
+              <p class="font-bold">PDF “7 Mentiras que Travam sua Agenda”</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-green-500 mt-1"></i>
+            <div>
+              <p class="font-bold">Checklist “3 Atitudes Diárias”</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-gift text-purple-600 mt-1"></i>
+            <div>
+              <p class="font-bold">Bônus 1: Textos Prontos para WhatsApp</p>
+              <p class="text-sm text-gray-700">Para iniciar conversas, confirmar agendamentos e gerar indicações.</p>
+              <p class="text-sm"><span class="text-red-600 line-through">R$59,00</span> → <span class="text-green-700 font-bold">Incluso Hoje</span></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-gift text-purple-600 mt-1"></i>
+            <div>
+              <p class="font-bold">Bônus 2: Checklist Diário da Captação</p>
+              <p class="text-sm text-gray-700">Organização leve de segunda a sábado + frases motivacionais.</p>
+              <p class="text-sm"><span class="text-red-600 line-through">R$39,00</span> → <span class="text-green-700 font-bold">Incluso Hoje</span></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-gift text-purple-600 mt-1"></i>
+            <div>
+              <p class="font-bold">Bônus 3: Modelo de Post Secreto + Variações por Nicho</p>
+              <p class="text-sm text-gray-700">10 modelos prontos + 5 stories com CTA validado.</p>
+              <p class="text-sm"><span class="text-red-600 line-through">R$47,00</span> → <span class="text-green-700 font-bold">Incluso Hoje</span></p>
+            </div>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-gift text-purple-600 mt-1"></i>
+            <div>
+              <p class="font-bold">Bônus Extra: Planilha de Rotina + Checklist de Perfil</p>
+              <p class="text-sm text-gray-700">Organize sua rotina e otimize seu perfil pra atrair clientes certas.</p>
+              <p class="text-sm"><span class="text-red-600 line-through">R$84,00</span> → <span class="text-green-700 font-bold">Incluso Hoje</span></p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="text-center mb-6">
+          <p class="text-sm text-gray-700">De <span class="line-through text-red-600 font-semibold">R$541,00</span></p>
+          <p class="text-4xl font-extrabold text-green-600 my-1">R$97,00</p>
+          <p class="text-sm text-gray-600 italic">ou 12x de R$9,70 no cartão</p>
+          <p class="text-green-700 font-bold mt-2">✅ Todos os bônus e atualizações futuras incluídos</p>
+        </div>
+
+        <a href="https://pay.agendainfinita.website/checkout/completo" class="inline-block bg-purple-700 hover:bg-purple-800 text-white font-bold text-lg py-4 px-8 rounded-xl shadow-lg transition duration-300 w-full text-center">
+          <i class="fas fa-lock mr-2"></i> QUERO O PLANO COMPLETO
+          <span class="block text-sm font-normal mt-1 uppercase">Acesso vitalício com bônus liberados</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+</section>
+<!-- Seção "Pirataria é Crime" -->
+<section class="bg-[#741b75] text-white text-left py-12 px-6">
+    <div class="container mx-auto max-w-3xl text-center">
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-6">
+            <picture>
+              <source srcset="images/Group_-2.webp" type="image/webp">
+              <img 
+                src="images/Group_-2.png" 
+                alt="Logo Pirataria é Crime" 
+                class="w-52"
+                loading="lazy"
+                decoding="async"
+                width="526" 
+                height="98">
+            </picture>
+          </div>
+          
+
+        <!-- Título Impactante -->
+        <h2 class="text-2xl font-bold uppercase mb-6">
+            <i class="fas fa-exclamation-triangle text-yellow-400 mr-2"></i> PIRATARIA É CRIME
+        </h2>
+
+        <!-- Texto Principal -->
+        <div class="bg-[#020381] p-6 rounded-lg shadow-lg border border-yellow-400">
+            <p class="text-lg leading-relaxed">
+                A venda dos <span class="font-bold">Produtos Agenda Infinita</span> só pode ser realizada através deste site, registrado em nome de <span class="font-bold">MSG AGDG LTDA.</span> Qualquer outro site onde você encontre este programa é uma <span class="uppercase font-bold">FALSIFICAÇÃO</span> e vai contra as leis.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed">
+                Evite falsificações e recuse conteúdos ilegais ou pirateados. <span class="uppercase font-bold">NÃO</span> adquira programas parecidos e que não são baseados em anos de estudo da psicologia comportamental.
+            </p>
+            <p class="mt-4 text-lg font-bold">
+                Não nos responsabilizamos por compras realizadas em outros sites.
+            </p>
+        </div>
+
+        <!-- Nota Legal sobre Facebook -->
+        <p class="mt-6 text-sm text-gray-300 italic">
+            Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais.
+        </p>
+
+    </div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white text-center py-6 border-t border-gray-700">
+    <div class="container mx-auto max-w-4xl flex flex-col md:flex-row items-center justify-between px-4">
+
+        <!-- Copyright -->
+        <p class="text-sm mb-2 md:mb-0">
+            Copyright © <span id="year"></span> Agenda Infinita
+        </p>
+
+        <!-- Links -->
+        <div class="flex space-x-4">
+            <a href="#" class="text-sm hover:text-gray-400 transition">Política de Privacidade</a>
+            <span class="text-sm text-gray-500">|</span>
+            <a href="#" class="text-sm hover:text-gray-400 transition">Termos de Uso</a>
+        </div>
+
+    </div>
+</footer>
+
+<!-- Atualiza automaticamente o ano -->
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<!--Script UTMS-->
+
+<script>
+window.onload = function () {
+  const links = document.querySelectorAll("a");
+  const urlAtual = new URL(window.location.href);
+  const searchParams = new URLSearchParams(urlAtual.search);
+
+  // Lista de parâmetros que queremos rastrear
+  const parametrosDesejados = [
+    'px',
+    'src',
+    'utm_source',
+    'utm_campaign',
+    'utm_medium',
+    'utm_content',
+    'utm_term',       // Corrigido!
+    'utm_perfect',
+    'click_id',
+    'fbclid'
+  ];
+
+  // Fallback: utm_term via cookie (ex: Leadsf)
+  const utmTermCookie = getCookie("Leadsf");
+  if (utmTermCookie && !searchParams.has("utm_term")) {
+    searchParams.set("utm_term", utmTermCookie);
+  }
+
+  // Fallback: utm_source via referrer se não estiver na URL
+  if (!searchParams.has("utm_source")) {
+    const referrer = document.referrer;
+    if (referrer) {
+      try {
+        const hostname = new URL(referrer).hostname;
+        const plataforma = getPlatformName(hostname);
+        searchParams.set("utm_source", plataforma);
+      } catch (e) {
+        searchParams.set("utm_source", "direto");
+      }
+    } else {
+      searchParams.set("utm_source", "direto");
+    }
+  }
+
+  // Aplicar os parâmetros apenas nos links dos domínios desejados
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    // Checa se o link é de agendainfinita.website OU greenn.com.br
+    if (href.includes("agendainfinita.website") || href.includes("greenn.com.br")) {
+      const linkURL = new URL(href, window.location.origin);
+
+      // Adiciona só os parâmetros desejados que ainda não existem no link
+      parametrosDesejados.forEach(chave => {
+        if (searchParams.has(chave) && !linkURL.searchParams.has(chave)) {
+          linkURL.searchParams.set(chave, searchParams.get(chave));
+        }
+      });
+
+      // Atualiza o href final
+      link.setAttribute("href", linkURL.toString());
+    }
+  });
+
+  // Função auxiliar: ler cookie
+  function getCookie(nome) {
+    const valor = `; ${document.cookie}`;
+    const partes = valor.split(`; ${nome}=`);
+    if (partes.length === 2) return partes.pop().split(';').shift();
+  }
+
+  // Função auxiliar: extrair nome de plataforma do referrer
+  function getPlatformName(hostname) {
+    let partes = hostname.replace(/^www\./, '').split('.');
+    if (partes.length > 2) {
+      partes = partes.slice(-2);
+    }
+    const nome = partes[0];
+    return nome.charAt(0).toUpperCase() + nome.slice(1);
+  }
+};
+</script>
+
+
+</body>
+</html>
