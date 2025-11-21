@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Oferta Exclusiva - Nosso Time "Feito Para Você"</title>
+    <meta name="description" content="Deixe nossa equipe montar sua máquina de clientes. O serviço 'Feito Para Você' para lotar sua agenda sem esforço.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Nosso CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo.webp" type="image/webp">
+    
+    <!-- Script de Rastreamento UTM (ESSENCIAL) -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','ttclid','xcod','sck','src','click_id','cid'];
+      const storage = localStorage;
+      const expDays = 7 * 24 * 60 * 60 * 1000;
+
+      new URLSearchParams(location.search).forEach((value, key) => {
+        if (keys.includes(key)) {
+          storage.setItem(key, value);
+          storage.setItem(key + '_exp', Date.now() + expDays);
+        }
+      });
+
+      const encodeInvisible = (str) => str.replace(/[0-9a-f]/gi, c => String.fromCharCode(8203 + parseInt(c, 16)));
+
+      const restoreLinks = () => {
+        document.querySelectorAll('a[href]').forEach(link => {
+          if (!link.href || link.href.includes('mailto:') || link.href.includes('#')) return;
+          try {
+            const url = new URL(link.href);
+            keys.forEach(key => {
+              const val = storage.getItem(key);
+              const exp = storage.getItem(key + '_exp');
+              if (val && exp && Date.now() < +exp) {
+                url.searchParams.set(key, val);
+              }
+            });
+            if (url.hostname.includes('wa.me') || url.hostname.includes('api.whatsapp.com') || url.hostname.includes('chat.whatsapp.com')) {
+              const clickId = storage.getItem('xcod') || storage.getItem('sck') || '';
+              if (clickId) {
+                const encoded = encodeInvisible(clickId);
+                const currentText = url.searchParams.get('text') || 'Olá';
+                url.searchParams.set('text', currentText + ' ' + encoded);
+              }
+            }
+            link.href = url.toString();
+          } catch (e) {}
+        });
+      };
+
+      restoreLinks();
+      new MutationObserver(restoreLinks).observe(document.body, { childList: true, subtree: true });
+      setTimeout(restoreLinks, 1500);
+      setTimeout(restoreLinks, 4000);
+    });
+    </script>
+</head>
+<body>
+
+    <!-- 1. Cabeçalho de Alerta e Urgência -->
+    <header class="alert-bar">
+        <div class="container">
+            <p><i class="fas fa-exclamation-triangle"></i> <strong>⚠️ IMPORTANTE:</strong> Você sabia que a maior parte das profissionais da beleza não enchem a agenda não porque são ruins no atendimento, mas porque não têm uma máquina de aquisição feita sob medida para o público delas?</p>
+        </div>
+    </header>
+ <!-- 5. Três Passos Visuais (Contextual) -->
+        <section class="steps-section">
+            <div class="container">
+                <h3>Processo Rápido e Seguro:</h3>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p class="step-text">Inscrição no Método</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p class="step-text">Atualize seu pedido agora!</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p class="step-text">Finalize sua inscrição!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <main>
+        <!-- 2. Headline do Upsell -->
+        <section class="headline-section">
+            <div class="container">
+                <h1>Esteja Pronta Para <span class="highlight">Deixar Nós Montar</span> Sua Máquina de Clientes!</h1>
+                <p class="sub-headline">Tenha Acesso ao Serviço <span class="highlight">"Agenda Lotada: No Automático"</span></p>
+            </div>
+        </section>
+
+        <!-- 3. Apresentação do Produto / Mockup -->
+        <section class="mockup-section">
+            <div class="container">
+                <img src="images/mockup-feito-para-voce.webp" alt="Mockup do Serviço Feito Para Você">
+            </div>
+        </section>
+
+        <!-- 4. Lista de Vantagens / Benefícios -->
+        <section class="benefits-section">
+            <div class="container">
+                <h2>ESTEJA PRONTO PARA OBTER:</h2>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-check-circle"></i> Ter uma campanha de anúncios pronta para rodar em 24h.</li>
+                    <li><i class="fas fa-check-circle"></i> Economizar semanas de estudo e tentativa e erro.</li>
+                    <li><i class="fas fa-check-circle"></i> Receber clientes qualificados no seu WhatsApp todos os dias.</li>
+                    <li><i class="fas fa-check-circle"></i> Otimizar seu Instagram para se tornar uma máquina de vendas.</li>
+                    <li><i class="fas fa-check-circle"></i> Ter o suporte da nossa equipe nos primeiros 30 dias.</li>
+                    <li><i class="fas fa-check-circle"></i> Escalar seu negócio sem se preocupar com a parte técnica.</li>
+                    <li><i class="fas fa-check-circle"></i> Focar apenas no que você faz de melhor: atender seus clientes.</li>
+                    <li><i class="fas fa-check-circle"></i> Ter uma previsibilidade de faturamento e de agenda.</li>
+                    <li><i class="fas fa-check-circle"></i> Conquistar sua liberdade financeira e de tempo.</li>
+                </ul>
+            </div>
+        </section>
+
+       
+
+        <!-- 6. Ancoragem de Preço -->
+        <section class="pricing-section">
+            <div class="container">
+                <p class="price-intro">Adicione Tudo Isso...</p>
+                <p class="price-from">DE R$1.997 POR MÊS</p>
+                <p class="price-to">POR APENAS 3x DE R$597,00</p>
+                <p class="price-urgency">Essa É A Única Chance De Aproveitar Esta Oferta!</p>
+            </div>
+        </section>
+
+        <!-- 7. Botões de Compra / Recusa -->
+        <section class="cta-section">
+            <div class="container">
+                <a href="https://pay.hotmart.com/URL_UPSELL_HOTMART_AQUI" class="cta-button-main">
+                    <i class="fas fa-lock"></i>
+                    SIM, QUERO O SERVIÇO FEITO PARA MIM!
+                </a>
+                <a href="/up2" class="cta-button-secondary">
+                    <i class="fas fa-times-circle"></i>
+                    NÃO, EU PREFIRO FAZER EU MESMO(A)
+                </a>
+                <p class="cta-note">Ao clicar, você será redirecionado para finalizar seu pedido com segurança.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 8. Garantia -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-seal">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2>Satisfação Garantida ou Seu Dinheiro de Volta!</h2>
+            <p>Até 15 dias depois do pagamento, você pode cancelar por qualquer motivo, e devolvemos todo o valor pago.</p>
+        </div>
+    </section>
+
+    <!-- 9. Seção "Pirataria é Crime" -->
+    <section class="piracy-section">
+        <div class="container">
+            <div class="piracy-logo">
+                <picture>
+                      <source srcset="images/Group_-2.webp" type="image/webp">
+                      <img src="images/Group_-2.png" alt="Logo Pirataria é Crime">
+                </picture>
+            </div>
+            <h2><i class="fas fa-exclamation-triangle"></i> PIRATARIA É CRIME</h2>
+            <div class="piracy-warning">
+                <p>
+                    A venda dos <span>Produtos Agenda Infinita</span> só pode ser realizada através deste site, registrado em nome de <span>MSG AGDG LTDA.</span> Qualquer outro site onde você encontre este programa é uma <span>FALSIFICAÇÃO</span> e vai contra as leis.
+                </p>
+                <p>
+                    Evite falsificações e recuse conteúdos ilegais ou pirateados. <span>NÃO</span> adquira programas parecidos e que não são baseados em anos de estudo da psicologia comportamental.
+                </p>
+                <p>
+                    Não nos responsabilizamos por compras realizadas em outros sites.
+                </p>
+            </div>
+            <p class="facebook-disclaimer">
+                Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usamos resultados reais.
+            </p>
+        </div>
+    </section>
+
+    <!-- 10. Rodapé Legal -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>Copyright © <span id="year"></span> Nome do expert aqui - Especialidade | 00.000.000/0001-00</p>
+        </div>
+    </footer>
+
+    <!-- Nosso JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

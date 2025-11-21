@@ -1,0 +1,511 @@
+/* --- GERAIS & RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- SEÇÕES (MOBILE-FIRST) --- */
+
+/* 1. Alert Bar */
+.alert-bar {
+    background-color: #dc2626;
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.alert-bar i {
+    margin-right: 8px;
+}
+
+/* 2. Headline Section */
+.headline-section {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+.headline-section h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+.headline-section .highlight {
+    color: #3b82f6;
+    border-bottom: 3px solid #3b82f6;
+    padding-bottom: 2px;
+}
+.sub-headline {
+    font-size: 1.1rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* 3. Mockup Section */
+.mockup-section {
+    padding: 20px;
+    text-align: center;
+}
+.mockup-section img {
+    max-width: 100%;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Benefits Section */
+.benefits-section {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: left;
+}
+.benefits-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #1e293b;
+}
+.benefits-list {
+    max-width: 100%;
+}
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #374151;
+}
+.benefits-list i {
+    color: #10b981;
+    font-size: 1.2rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* 5. Steps Section (Contextual) */
+.steps-section {
+    background-color: #f1f5f9;
+    padding: 30px 20px;
+    text-align: center;
+}
+.steps-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #475569;
+}
+.steps-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+}
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+.step.active {
+    opacity: 1;
+}
+.step-number {
+    background-color: #cbd5e1;
+    color: #475569;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+.step.active .step-number {
+    background-color: #3b82f6;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+.step-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+}
+.step.active .step-text {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* 6. Pricing Section */
+.pricing-section {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+.price-intro {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+.price-from {
+    font-size: 1.3rem;
+    color: #6b7280;
+    text-decoration: line-through;
+    margin-top: 5px;
+}
+.price-to {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #059669;
+    margin-top: 5px;
+}
+.price-installments {
+    font-size: 1rem;
+    color: #64748b;
+    font-style: italic;
+    margin-top: 5px;
+}
+.price-urgency {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #dc2626;
+    margin-top: 10px;
+}
+
+/* 7. CTA Section */
+.cta-section {
+    background-color: #f8fafc;
+    padding: 30px 20px 40px 20px;
+    text-align: center;
+}
+.cta-button-main {
+    display: block;
+    background-color: #059669;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 18px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+.cta-button-main:hover {
+    background-color: #047857;
+    transform: translateY(-2px);
+}
+.cta-button-main i {
+    margin-right: 10px;
+}
+.cta-button-secondary {
+    display: block;
+    background-color: #fff;
+    color: #dc2626;
+    border: 1px solid #dc2626;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.cta-button-secondary:hover {
+    background-color: #fef2f2;
+}
+.cta-button-secondary i {
+    margin-right: 10px;
+}
+.cta-note {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 15px;
+}
+
+/* 8. Guarantee Section */
+.guarantee-section {
+    background-color: #e5e7eb;
+    padding: 30px 20px;
+    text-align: center;
+}
+.guarantee-seal {
+    font-size: 2.5rem;
+    color: #059669;
+    margin-bottom: 15px;
+}
+.guarantee-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+.guarantee-section p {
+    font-size: 0.9rem;
+    color: #475569;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* 9. Piracy & Footer Section */
+.piracy-section {
+    background-color: #741b75;
+    color: #fff;
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+.piracy-logo img {
+    width: 13rem;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+.piracy-section h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+.piracy-section h2 i {
+    color: #eab308;
+    margin-right: 0.5rem;
+}
+.piracy-warning {
+    background-color: #020381;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #eab308;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+.piracy-warning p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+.piracy-warning p:last-child {
+    margin-bottom: 0;
+}
+.piracy-warning span {
+    font-weight: 700;
+}
+.piracy-warning .uppercase {
+    text-transform: uppercase;
+}
+.facebook-disclaimer {
+    font-size: 0.875rem;
+    color: #d1d5db;
+    font-style: italic;
+    margin-top: 1.5rem;
+}
+
+.main-footer {
+    background-color: #1e293b;
+    color: #94a3b8;
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid #374151;
+}
+.main-footer .container {
+    max-width: 64rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.main-footer p {
+    font-size: 0.875rem;
+}
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.footer-links a {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: #d1d5db;
+}
+.footer-links span {
+    color: #6b7280;
+}
+
+/* --- MEDIA QUERIES PARA DESKTOP (min-width: 768px) --- */
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    .headline-section {
+        padding: 60px 40px;
+    }
+    .headline-section h1 {
+        font-size: 2.8rem;
+    }
+    .sub-headline {
+        font-size: 1.3rem;
+    }
+
+    .mockup-section img {
+        width: 400px;
+    }
+
+    .benefits-section {
+        padding: 60px 40px;
+    }
+    .benefits-section h2 {
+        font-size: 2rem;
+    }
+    .benefits-list {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .benefits-list li {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .steps-section h3 {
+        font-size: 1.5rem;
+    }
+    .steps-grid {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    .step-text {
+        font-size: 1rem;
+    }
+
+    .pricing-section {
+        padding: 60px 40px;
+    }
+    .price-intro {
+        font-size: 1.4rem;
+    }
+    .price-from {
+        font-size: 1.6rem;
+    }
+    .price-to {
+        font-size: 3.5rem;
+    }
+    .price-urgency {
+        font-size: 1.3rem;
+    }
+
+    .cta-section {
+        padding: 60px 40px 80px 40px;
+    }
+    .cta-button-main {
+        font-size: 1.3rem;
+        padding: 20px 40px;
+        max-width: 400px;
+        margin: 0 auto 20px auto;
+    }
+    .cta-button-secondary {
+        font-size: 1.3rem;
+        padding: 18px 30px;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    .cta-note {
+        font-size: 1rem;
+    }
+
+    .guarantee-section {
+        padding: 60px 40px;
+    }
+    .guarantee-seal {
+        font-size: 3rem;
+    }
+    .guarantee-section h2 {
+        font-size: 1.7rem;
+    }
+    .guarantee-section p {
+        font-size: 1rem;
+        max-width: 600px;
+    }
+
+    .piracy-section {
+        padding: 3rem 1.5rem;
+    }
+    .piracy-logo img {
+        width: 15rem;
+    }
+    .piracy-section h2 {
+        font-size: 2rem;
+    }
+    .piracy-warning p {
+        font-size: 1.125rem;
+    }
+    .piracy-warning p:last-child {
+        margin-bottom: 0;
+    }
+    .piracy-warning span {
+        font-weight: 700;
+    }
+    .piracy-warning .uppercase {
+        text-transform: uppercase;
+    }
+    .facebook-disclaimer {
+        font-size: 1rem;
+    }
+    .main-footer .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
