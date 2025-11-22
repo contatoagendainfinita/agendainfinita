@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://i.postimg.cc/BbMxjygp/image.png" sizes="32x32"/>
+<title>Confirme seu pagamento</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+<div class="bg-white p-6 rounded-lg shadow-md text-center w-full max-w-lg">
+  <p class="text-lg font-bold mb-4">Falta pouco para finalizar, clique no botão abaixo</p>
+  <button id="continueButton" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600" onclick="openRedirectUrl()">CLIQUE AQUI PARA CONTINUAR</button>
+  <hr class="my-4 border-gray-300">
+  <div id="belowHr" class="hidden">
+    <div id="loading" class="mx-auto border-4 border-gray-300 border-t-green-500 rounded-full w-16 h-16 animate-spin"></div>
+    <p class="text-lg font-bold mt-4">Aguardando confirmação...</p>
+    <p class="text-sm text-gray-700">Estamos aguardando seu pagamento</p>
+    <p id="message" class="text-red-500 text-sm mt-2 hidden">Erro ao verificar o status do pedido nesta página.<br> Verifique o status no seu email.</p>
+  </div>
+</div>
+
+<script>
+  // Função para simular verificação de status
+  function checkStatus() {
+    console.log("Verificando status...");
+    setTimeout(() => {
+      document.getElementById("message").classList.remove("hidden");
+    }, 10000); // Simula erro após 10 segundos
+  }
+
+  // Função para abrir a URL decodificada
+  function openRedirectUrl() {
+    const encodedUrl = "aHR0cHM6Ly93d3cuZXhhbXBsZS5jb20="; // URL codificada em Base64 (exemplo)
+    try {
+      const decodedUrl = atob(encodedUrl); // Decodifica Base64 para texto
+      window.open(decodedUrl, '_blank');
+      document.getElementById('belowHr').classList.remove('hidden');
+      checkStatus(); // Inicia a verificação do status do pedido
+    } catch (error) {
+      console.error("Erro ao decodificar a URL:", error);
+      document.getElementById("message").classList.remove("hidden");
+    }
+  }
+</script>
+
+<section class="text-center mt-6 space-y-2">
+  <p class="text-sm text-teal-500">
+    <i class="fas fa-lock" aria-hidden="true"></i> Pagamento 100% seguro, processado com criptografia 128bits.
+  </p>
+  <p class="text-sm text-gray-700">* Produto digital, os dados para acesso serão enviados por email.</p>
+</section>
+
+<footer class="text-center mt-8 space-y-4">
+  <div class="flex items-center justify-center space-x-2 bg-green-100 text-green-700 p-2 rounded">
+    <img src="https://fornpay-public.s3.amazonaws.com/2036255815/products/qjzcc8qea4twnqyzvzil2vrsv" alt="Suporte Avalia" class="w-8 h-8 rounded-full">
+    <span>Suporte Avalia</span>
+  </div>
+  <p class="text-sm">Em caso de dúvidas entre em contato</p>
+  <p class="text-sm">Email: <a href="mailto:contato@avaliaapp.site" class="text-blue-600 hover:underline">contato@avaliaapp.site</a></p>
+  <p class="text-sm">Site 100% seguro</p>
+  <div class="inline-block border border-green-500 bg-white rounded-lg p-2 shadow-sm">
+    <a href="#" target="_blank" class="flex items-center" title="Confira nossa reputação no Reclame Aqui">
+      <img src="https://s3.amazonaws.com/raichu-beta/selos/assets/images/ra-1000.svg" alt="RA 1000 Reclame Aqui" class="w-8 h-8 mr-2">
+      <div>
+        <p class="text-sm font-bold text-green-500">RA 1000</p>
+        <span class="text-xs text-green-600">Reclame <strong class="text-green-700">AQUI</strong></span>
+      </div>
+    </a>
+  </div>
+  <p class="text-xs text-gray-500 mt-4 px-4">
+    TriboPay está processando este pedido à serviço de Suporte Avalia. Ao prosseguir você está concordando com os termos de uso.
+  </p>
+</footer>
+</body>
+</html>

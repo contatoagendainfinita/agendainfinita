@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Página de checkout segura para compra do infoproduto.">
+    <title>Checkout Infoproduto</title>
+    
+    <!-- Favicon e App Icons -->
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" href="images/favicon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="images/site.webmanifest">
+    
+    <!-- Font Awesome para ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Nosso CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu Superior -->
+    <header class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="urgency-text">
+                    Realize o pagamento agora!
+                </div>
+                <div class="countdown-container">
+                    <div id="hours" class="countdown-item">00 <span>Horas</span></div>
+                    <div id="minutes" class="countdown-item">00 <span>Minutos</span></div>
+                    <div id="seconds" class="countdown-item">00 <span>Segundos</span></div>
+                </div>
+                <div class="cta-button-container">
+                    <a href="#formulario">
+                        <button class="btn btn-primary">COMPRAR AGORA</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Acesso Disponível -->
+    <div class="availability-notice">
+        <i class="fas fa-shield-alt"></i> Acesso Disponível por Tempo Limitado!
+    </div>
+
+    <main>
+        <!-- Banner Principal -->
+        <div class="main-banner">
+            <img src="https://placehold.co/600x400/16a34a/FFFF?font=montserrat&text=Banner%20aqui" alt="Banner do Produto" class="main-banner-img">
+        </div>
+
+        <!-- Formulário de Checkout -->
+        <div id="formulario" class="form-section">
+            <form id="checkoutForm" class="checkout-form">
+                <!-- Identificação -->
+                <div class="form-step">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <h2>Identifique-se</h2>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nome" placeholder="Nome e Sobrenome" required>
+                        <input type="email" id="email" placeholder="E-mail" required>
+                        <input type="tel" id="telefone" placeholder="Telefone/WhatsApp" required>
+                    </div>
+                </div>
+
+                <!-- Pagamento -->
+                <div class="form-step payment-step">
+                    <div class="payment-header">
+                        <span class="step-number">2</span>
+                        <h3>Pagamento</h3>
+                    </div>
+                    <p class="payment-subtitle">Escolha o método de pagamento que mais combina com você.</p>
+                    
+                    <fieldset>
+                        <legend class="sr-only">Métodos de Pagamento</legend>
+                        <div class="payment-option selected">
+                            <label>
+                                <input type="radio" name="payment_method" value="pix" checked>
+                                <span class="payment-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="pix-icon"><path fill="#4db6ac" d="M242.4 292.5C247.8 287.1 257.1 287.1 262.5 292.5L339.5 369.5C353.7 383.7 372.6 391.5 392.6 391.5H407.7L310.6 488.6C280.3 518.1 231.1 518.1 200.8 488.6L103.3 391.2H112.6C132.6 391.2 151.5 383.4 165.7 369.2L242.4 292.5zM262.5 218.9C256.1 224.4 247.9 224.5 242.4 218.9L165.7 142.2C151.5 127.1 132.6 120.2 112.6 120.2H103.3L200.7 22.76C231.1-7.586 280.3-7.586 310.6 22.76L407.8 119.9H392.6C372.6 119.9 353.7 127.7 339.5 141.9L262.5 218.9zM112.6 142.7C126.4 142.7 139.1 148.3 149.7 158.1L226.4 234.8C233.6 241.1 243 245.6 252.5 245.6C261.9 245.6 271.3 241.1 278.5 234.8L355.5 157.8C365.3 148.1 378.8 142.5 392.6 142.5H430.3L488.6 200.8C518.9 231.1 518.9 280.3 488.6 310.6L430.3 368.9H392.6C378.8 368.9 365.3 363.3 355.5 353.5L278.5 276.5C264.6 262.6 240.3 262.6 226.4 276.6L149.7 353.2C139.1 363 126.4 368.6 112.6 368.6H80.78L22.76 310.6C-7.586 280.3-7.586 231.1 22.76 200.8L80.78 142.7H112.6z"></path></svg>
+                                    <span class="ml-2">PIX</span>
+                                </span>
+                                <span class="approval-badge">Aprovação Imediata</span>
+                            </label>
+                            <div class="pix-info-box">
+                                <p>- Liberação imediata!</p>
+                                <p>- Pague usando o aplicativo do seu banco, simples e rápido.</p>
+                                <p>- Garantia de segurança com tecnologia do Banco Central.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="cpf">Informe seu CPF para pagamento</label>
+                                <input type="text" id="cpf" placeholder="000.000.000-00">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <button id="payBtn" type="submit" class="btn btn-primary btn-submit">PAGAR AGORA</button>
+                <p id="formError" class="form-error hidden"></p>
+            </form>
+        </div>
+
+        <!-- Banner de Segurança -->
+        <div class="security-banner">
+            <img src="https://placehold.co/200x400/020381/FFFF?font=montserrat&text=Provasocial%20aqui" alt="Pagamento Seguro" class="security-banner-img">
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="support-info">
+                <img src="https://placehold.co/200x200/741b75/FFF?font=montserrat&text=AG" alt="Suporte" class="support-icon">
+                <span>Suporte</span>
+            </div>
+            <p>Em caso de dúvidas entre em contato</p>
+            <p>Email: contato@checkout.site</p>
+            <p>Site 100% seguro</p>
+            <div class="reclame-aqui-badge">
+                <a href="#" target="_blank" title="Confira nossa reputação no Reclame Aqui">
+                    <div class="badge-content">
+                        <img src="https://s3.amazonaws.com/raichu-beta/selos/assets/images/ra-1000.svg" alt="RA 1000" class="badge-icon">
+                        <div class="badge-text">
+                            <p>RA 1000</p>
+                            <span>Reclame <strong>AQUI</strong></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <p class="terms">
+                TriboPay está processando este pedido à serviço de Suporte Avalia. Ao prosseguir você está concordando com os termos de uso.
+            </p>
+        </div>
+    </footer>
+
+    <p class="security-notice">
+        <i class="fas fa-lock"></i> Pagamento 100% seguro, processado com criptografia 128bits.
+    </p>
+    <p class="product-notice">
+        * Produto digital, os dados para acesso serão enviados por email.
+    </p>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/imask"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

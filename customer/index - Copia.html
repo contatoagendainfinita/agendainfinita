@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pagamento - PIX (Customer)</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    .qr-img { width: 260px; height: 260px; object-fit: contain; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+  <main class="max-w-xl w-full bg-white rounded-lg shadow-lg p-6">
+    <header class="flex items-start justify-between">
+      <div>
+        <h1 class="text-2xl font-bold">Pagamento via PIX</h1>
+        <p class="text-sm text-gray-600 mt-1">Confirme quando realizar o pagamento — a gente verifica automaticamente.</p>
+      </div>
+      <div class="text-right">
+        <span id="orderIdText" class="text-sm text-gray-500"></span>
+        <div id="utmInfo" class="text-xs text-gray-400 mt-1"></div>
+      </div>
+    </header>
+
+    <section class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <div class="flex flex-col items-center">
+        <div id="qrContainer" class="p-4 bg-gray-100 rounded">
+          <img id="qrImage" class="qr-img" src="" alt="QR Code PIX" />
+        </div>
+
+        <div class="mt-4 flex items-center space-x-2">
+          <button id="copyBtn" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Copiar código PIX</button>
+          <a id="openAppBtn" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500" href="#" target="_blank" rel="noopener">Abrir no app</a>
+        </div>
+
+        <p id="copiedMsg" class="text-sm text-green-600 mt-2 hidden">Código copiado para área de transferência ✅</p>
+
+        <div class="mt-4 w-full">
+          <label class="block text-xs text-gray-500 mb-1">Payload / Código PIX</label>
+          <textarea id="pixRaw" rows="3" class="w-full p-2 rounded border mono text-sm" readonly></textarea>
+        </div>
+      </div>
+
+      <div>
+        <div class="bg-white p-4 rounded-md border">
+          <p class="text-sm text-gray-500">Valor</p>
+          <p id="amount" class="text-3xl font-bold mt-1">R$ 0,00</p>
+
+          <p class="text-sm text-gray-500 mt-4">Válido por</p>
+          <div class="mt-1 inline-flex items-center space-x-3">
+            <div id="timeBadge" class="px-3 py-1 bg-black text-white rounded">15:00</div>
+            <div class="text-sm text-gray-600">Tempo restante</div>
+          </div>
+
+          <div class="mt-6">
+            <p class="text-sm text-gray-700">Abra o app do seu banco, escaneie o QR ou cole o código PIX. Depois clique em “Confirmar pagamento”.</p>
+          </div>
+
+          <div class="mt-6 space-y-3">
+            <button id="confirmBtn" class="w-full px-4 py-3 bg-blue-600 text-white rounded hover:bg-blue-500">Confirmar pagamento</button>
+            <button id="tryAgainBtn" class="w-full px-4 py-3 bg-gray-100 rounded hover:bg-gray-200">Ainda não paguei / Gerar outro PIX</button>
+            <p id="statusMsg" class="text-sm text-gray-600 mt-2">Status: <strong id="statusStrong">Pendente</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-6 text-xs text-gray-500">
+      <p>Se tiver problemas, entre em contato: <a href="mailto:contato@avaliaapp.site" class="text-blue-600">contato@avaliaapp.site</a></p>
+    </footer>
+  </main>
+
+  <script>
+    /*************************************************************************
+     * CONFIGURE AQUI:
+     * - CHECK_URL: endpoint que retorna status da transação.
+     *   Ele deve aceitar ?hash=HASH ou ?orderId=TRANSACTION_ID e responder JSON com campo "status"
+     * Ex.: { status: "paid" } ou { status: "waiting_payment" }
+     *************************************************************************/
+    const CHECK_URL = 'https://seu-worker.exemplo.workers.dev/check'; // <-- coloque seu Worker
+    const CHECK_PARAM = 'hash'; // 'hash' ou 'orderId' conforme sua API
+
+    /*************************************************************************
+     * Inicialização: ler params passados pelo checkout:
+     * - hash  -> transaction hash
+     * - valor -> valor em reais (ex: 100.10 ou 10010)
+     * - chave -> payload PIX (EMV string ou URL)
+     * - optional: orderId (transaction id) ou utm params
+     *************************************************************************/
+    const params = new URLSearchParams(window.location.search);
+    const HASH = params.get('hash') || params.get('transaction') || '';
+    const ORDER_ID_PARAM = params.get('orderId') || params.get('id') || '';
+    const VALOR_PARAM = params.get('valor') || params.get('amount') || '0.00';
+    const PIX_PAYLOAD_RAW = params.get('chave') || params.get('pix') || '';
+
+    const utm_source = params.get('utm_source') || '';
+    const utm_medium = params.get('utm_medium') || '';
+    const utm_campaign = params.get('utm_campaign') || '';
+    const utm_content = params.get('utm_content') || '';
+    const utm_term = params.get('utm_term') || '';
+    const src = params.get('src') || '';
+
+    // função para interpretar valor: aceita "10010" (centavos) ou "100.10"
+    function parseValor(v) {
+      if (!v) return 0;
+      // se só dígitos (ex: 10010) assumimos centavos
+      const onlyDigits = v.replace(/\D/g, '');
+      if (onlyDigits.length > 0 && /^[0-9]+$/.test(v) && onlyDigits.length > 2 && !v.includes('.') && !v.includes(',')) {
+        // ex: "10010" => 100.10
+        const cents = parseInt(onlyDigits, 10);
+        return cents / 100;
+      }
+      // normalizar vírgula -> ponto e parseFloat
+      const norm = v.replace(',', '.').replace(/[^\d.]/g, '');
+      const n = parseFloat(norm);
+      return isNaN(n) ? 0 : n;
+    }
+
+    const valorNumber = parseValor(VALOR_PARAM);
+
+    // elementos
+    const qrImage = document.getElementById('qrImage');
+    const amountEl = document.getElementById('amount');
+    const orderIdText = document.getElementById('orderIdText');
+    const statusStrong = document.getElementById('statusStrong');
+    const statusMsg = document.getElementById('statusMsg');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const tryAgainBtn = document.getElementById('tryAgainBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const copiedMsg = document.getElementById('copiedMsg');
+    const openAppBtn = document.getElementById('openAppBtn');
+    const pixRaw = document.getElementById('pixRaw');
+    const timeBadge = document.getElementById('timeBadge');
+
+    // popular UI
+    amountEl.textContent = `R$ ${valorNumber.toFixed(2).replace('.', ',')}`;
+    orderIdText.textContent = `Pedido: ${HASH || ORDER_ID_PARAM || ('ORD' + Math.floor(Math.random() * 900000 + 100000))}`;
+    statusStrong.textContent = 'Pendente';
+
+    // mostrar UTMs se existirem
+    const utmInfo = document.getElementById('utmInfo');
+    const utmParts = [];
+    if (src) utmParts.push(`src=${src}`);
+    if (utm_source) utmParts.push(`utm_source=${utm_source}`);
+    if (utm_medium) utmParts.push(`utm_medium=${utm_medium}`);
+    if (utm_campaign) utmParts.push(`utm_campaign=${utm_campaign}`);
+    if (utm_content) utmParts.push(`utm_content=${utm_content}`);
+    if (utm_term) utmParts.push(`utm_term=${utm_term}`);
+    if (utmParts.length) utmInfo.textContent = utmParts.join(' • ');
+
+    // Normaliza payload PIX (decodeURIComponent caso venha codificado)
+    let PIX_PAYLOAD = PIX_PAYLOAD_RAW ? decodeURIComponent(PIX_PAYLOAD_RAW) : '';
+
+    // Se payload estiver vazio mas tiver hash, podemos tentar pegar via CHECK_URL (opcional)
+    // Função para gerar imagem QR via API pública
+    function buildQrUrl(data) {
+      const payload = data || `PIX: ${HASH || ORDER_ID_PARAM || ''}`;
+      return 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' + encodeURIComponent(payload);
+    }
+
+    // setar imagem e texto bruto
+    qrImage.src = buildQrUrl(PIX_PAYLOAD);
+    pixRaw.value = PIX_PAYLOAD || `PIX - Pedido ${orderIdText.textContent} - R$ ${valorNumber.toFixed(2)}`;
+
+    // openApp: se for payload EMV usamos payload; se for URL usamos URL
+    openAppBtn.href = (PIX_PAYLOAD && PIX_PAYLOAD.startsWith('http')) ? PIX_PAYLOAD : '#';
+    openAppBtn.addEventListener('click', (ev) => {
+      if (!PIX_PAYLOAD) {
+        ev.preventDefault();
+        alert('Nenhum payload PIX disponível para abrir no app.');
+      } else if (!PIX_PAYLOAD.startsWith('http')) {
+        // não existe um padrão universal para abrir apps com payload; deixamos a ação padrão (abrir link) bloquear e instruir usuário
+        // Algumas carteiras aceitam pix:// URIs, mas não é padrão. Evite tentar forçar.
+        // Abrimos a mesma imagem do QR em nova aba como fallback:
+        ev.preventDefault();
+        window.open(buildQrUrl(PIX_PAYLOAD), '_blank');
+      }
+      // se PIX_PAYLOAD for http, o <a> já abre
+    });
+
+    // copiar payload
+    copyBtn.addEventListener('click', async () => {
+      const toCopy = PIX_PAYLOAD || pixRaw.value;
+      try {
+        await navigator.clipboard.writeText(toCopy);
+        copiedMsg.classList.remove('hidden');
+        setTimeout(() => copiedMsg.classList.add('hidden'), 2500);
+      } catch (err) {
+        alert('Não foi possível copiar automaticamente. Selecione e copie manualmente:\n\n' + toCopy);
+      }
+    });
+
+    /********** Polling e verificação de status **********/
+    // Faz a checagem usando CHECK_PARAM (hash ou orderId)
+    async function checkStatusOnce() {
+      try {
+        // escolhe qual param enviar
+        const key = CHECK_PARAM === 'orderId' ? (ORDER_ID_PARAM || HASH) : (HASH || ORDER_ID_PARAM);
+        if (!key) throw new Error('Nenhum identificador (hash/orderId) disponível para verificação.');
+
+        const url = new URL(CHECK_URL);
+        url.searchParams.set(CHECK_PARAM, key);
+
+        const res = await fetch(url.toString(), { method: 'GET', cache: 'no-store', headers: { 'Accept': 'application/json' }});
+        if (!res.ok) {
+          // tratar 404 separadamente
+          if (res.status === 404) {
+            return { ok: false, status: 'not_found' };
+          }
+          return { ok: false, status: 'error', code: res.status };
+        }
+
+        const json = await res.json();
+        // Normalize status string
+        const st = (json.status || json.payment_status || '').toString().toLowerCase();
+        return { ok: true, status: st, raw: json };
+      } catch (err) {
+        console.warn('Erro ao checar status:', err);
+        return { ok: false, status: 'network_error', error: err };
+      }
+    }
+
+    // Poll com backoff; usado no botão "Confirmar pagamento"
+    async function pollStatusWithBackoff() {
+      confirmBtn.disabled = true;
+      statusStrong.textContent = 'Verificando...';
+      statusMsg.querySelector('strong')?.remove?.(); // evitar erro se não existir
+
+      const delays = [0, 2000, 5000, 10000, 20000]; // ms
+      for (let i = 0; i < delays.length; i++) {
+        if (delays[i] > 0) await new Promise(r => setTimeout(r, delays[i]));
+        const res = await checkStatusOnce();
+        if (!res.ok) {
+          if (res.status === 'not_found') {
+            statusStrong.textContent = 'Cobrança não encontrada';
+            statusMsg.textContent = 'Cobrança não encontrada. Contate o suporte.';
+            break;
+          }
+          if (res.status === 'network_error') {
+            statusStrong.textContent = 'Erro de rede';
+            statusMsg.textContent = 'Erro de rede. Tente novamente.';
+            continue;
+          }
+          statusStrong.textContent = 'Erro';
+          statusMsg.textContent = 'Erro ao verificar. Tente novamente.';
+          continue;
+        }
+
+        const st = res.status;
+        if (st.includes('paid') || st.includes('pago') || st.includes('confirmed') || st.includes('confirmed_payment') || st.includes('confirmed_payment')) {
+          statusStrong.textContent = 'Pago ✅';
+          statusMsg.textContent = 'Pagamento confirmado! Redirecionando...';
+          // redirecionar para página de sucesso (ajuste se precisar)
+          setTimeout(() => {
+            window.location.href = `/sucesso.html?hash=${encodeURIComponent(HASH || '')}&orderId=${encodeURIComponent(ORDER_ID_PARAM || '')}`;
+          }, 800);
+          return;
+        } else if (st.includes('waiting') || st.includes('pending') || st.includes('waiting_payment') || st.includes('pendente')) {
+          statusStrong.textContent = `Pendente (${i+1}/${delays.length})`;
+          statusMsg.textContent = `Ainda pendente (tentativa ${i+1}/${delays.length})`;
+          // continua
+        } else if (st.includes('expired') || st.includes('vencido') || st.includes('failed') || st.includes('rejected')) {
+          statusStrong.textContent = 'Expirado / Rejeitado';
+          statusMsg.textContent = 'Pagamento não realizado. Gere outro PIX.';
+          break;
+        } else {
+          // status desconhecido — mostra raw
+          statusStrong.textContent = `Status: ${st || 'desconhecido'}`;
+          statusMsg.textContent = 'Aguardando confirmação...';
+        }
+      }
+      confirmBtn.disabled = false;
+    }
+
+    // Evento do botão Confirmar
+    confirmBtn.addEventListener('click', async (ev) => {
+      ev.preventDefault();
+      await pollStatusWithBackoff();
+    });
+
+    // Try again: volta para checkout (ajuste conforme fluxos reais)
+    tryAgainBtn.addEventListener('click', () => {
+      // Ex.: voltar para a página anterior / checkout
+      window.location.href = '/';
+    });
+
+    /********** Contador regressivo (15 minutos) **********/
+    let remaining = 15 * 60; // segundos
+    const interval = setInterval(() => {
+      if (remaining <= 0) {
+        clearInterval(interval);
+        statusStrong.textContent = 'Expirado';
+        statusMsg.textContent = 'Tempo esgotado. Gere outro PIX.';
+        confirmBtn.disabled = true;
+        return;
+      }
+      remaining--;
+      const mm = Math.floor(remaining / 60);
+      const ss = remaining % 60;
+      if (timeBadge) timeBadge.textContent = `${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+    }, 1000);
+
+    /********** Caso o payload PIX esteja vazio: tenta buscar via CHECK_URL (opcional) **********/
+    (async function tryFetchPixIfMissing() {
+      if (PIX_PAYLOAD) return;
+      // tenta buscar no endpoint de check (se existir) para preencher pix
+      try {
+        const key = CHECK_PARAM === 'orderId' ? (ORDER_ID_PARAM || HASH) : (HASH || ORDER_ID_PARAM);
+        if (!key) return;
+        const url = new URL(CHECK_URL);
+        url.searchParams.set(CHECK_PARAM, key);
+        const res = await fetch(url.toString(), { method: 'GET', cache: 'no-store', headers: { 'Accept': 'application/json' }});
+        if (!res.ok) return;
+        const json = await res.json();
+        // esperado que API retorne objeto com body.pix.pix_url ou pix.pix_qr_code
+        // Normalize: se array-> body -> pix
+        let root = json;
+        if (Array.isArray(json) && json.length > 0) {
+          root = json[0].body || json[0];
+        } else if (json && json.body) root = json.body;
+        const candidate = (root && root.pix && (root.pix.pix_url || root.pix.pix_qr_code || root.pix.qr || root.pix.payload)) || root.qr || root.pix_payload || '';
+        if (candidate) {
+          PIX_PAYLOAD = candidate;
+          qrImage.src = buildQrUrl(PIX_PAYLOAD);
+          pixRaw.value = PIX_PAYLOAD;
+          if (!openAppBtn.href || openAppBtn.href === '#') openAppBtn.href = PIX_PAYLOAD.startsWith('http') ? PIX_PAYLOAD : '#';
+        }
+      } catch (err) {
+        // silencioso
+        console.warn('Não foi possível buscar payload PIX automaticamente', err);
+      }
+    })();
+
+    // fim do script
+  </script>
+</body>
+</html>

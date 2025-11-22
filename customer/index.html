@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Processamento de Pedidos - PIX</title>
+  <link rel="icon" href="https://i.postimg.cc/BbMxjygp/image.png" sizes="32x32"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f4f6f8;
+      --card:#fff;
+      --accent:#16a34a;
+      --muted:#6b7280;
+      --danger:#ef4444;
+      --radius:12px;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#111}
+    .page{display:flex;align-items:flex-start;justify-content:center;padding:28px 12px;}
+    .container{width:100%;max-width:420px;background:var(--card);border-radius:var(--radius);box-shadow:0 12px 30px rgba(0,0,0,0.08);padding:18px;margin:8px;}
+    .top {display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .small{font-size:13px;color:var(--muted)}
+    .value {color:var(--accent);font-weight:700}
+    .inputCode{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ee;background:#fbfdff;font-size:14px;box-sizing:border-box}
+    .btn {display:inline-flex;align-items:center;gap:8px;justify-content:center;border-radius:8px;padding:10px 12px;font-weight:700;cursor:pointer;border:0}
+    .btn-ghost {background:#f3f4f6;color:#111;border:1px solid #e6e9ee}
+    .btn-copy {background:var(--accent);color:white;width:100%;border:0}
+    .actions {display:flex;gap:8px;margin-top:10px}
+    .qr-wrap {text-align:center;padding:12px 0 4px}
+    .qr-img {width:260px;height:260px;object-fit:contain;background:#fff;border-radius:8px;border:1px solid #efefef;display:block;margin:0 auto}
+    .expires {color:var(--danger);font-weight:700;margin-top:8px;text-align:center}
+    .how {font-size:13px;color:var(--muted);margin-top:12px}
+    .spinner {width:56px;height:56px;border:6px solid #f3f3f3;border-top:6px solid var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:14px auto}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .statusBox{text-align:center;margin-top:6px}
+    .statusTitle{font-weight:700;margin:8px 0}
+    .statusMsg{color:var(--muted);font-size:14px}
+    .footer{font-size:12px;color:var(--muted);text-align:center;margin-top:14px}
+    .row-between{display:flex;justify-content:space-between;gap:8px}
+    .open-app{background:#fff;color:#111;border:1px solid #e6e9ee;padding:10px;border-radius:8px;flex:1;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+    .confirm {background:#0b6ef7;color:white;border-radius:8px;padding:10px 12px;border:0;flex:1;font-weight:700}
+    .copied {color:#16a34a;font-size:13px;margin-top:8px;text-align:center;display:none}
+    @media (max-width:420px){
+      .qr-img{width:200px;height:200px}
+    }
+    footer {
+      background: #ffffff;
+      padding: 1rem;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="container" role="main" aria-labelledby="pagetitle">
+      <div class="top">
+        <div class="small">Pedido: <span id="orderIdDisplay" style="color: #0b6ef7;">—</span></div>
+        <div class="small">Valor: <span class="value" id="amountLabel" style="color: #0b6ef7;">R$ 0,00</span></div>
+      </div>
+
+      <!-- Código PIX (input, copy) -->
+      <div>
+        <input id="pixKey" class="inputCode" readonly aria-label="Código PIX (copia e cola)" />
+        <div class="copied" id="copiedMsgTop" role="status" aria-live="polite">Código copiado para área de transferência ✅</div>
+        <button id="copyPrimary" class="btn btn-copy" style="margin-top:10px"><i class="fa-regular fa-copy"></i> Copiar código (PIX Copia e Cola)</button>
+      </div>
+
+      <!-- QR -->
+      <div class="qr-wrap" aria-hidden="false">
+        <img id="qrImage" class="qr-img" alt="QR Code PIX" />
+        <div class="expires" id="expiresText">Expira em: <span id="countdown">10:00</span></div>
+      </div>
+
+      <!-- How to pay -->
+      <div class="how">
+        <b>Como pagar com PIX:</b>
+        <ol style="margin:6px 0 0 18px;padding:0">
+          <li>Abra o app do seu banco</li>
+          <li>Escolha pagar com PIX</li>
+          <li>Escaneie o QR Code ou cole o código</li>
+        </ol>
+      </div>
+
+      <!-- Spinner / status / actions -->
+      <div class="spinner" id="spinner" aria-hidden="true" style="display:none"></div>
+
+      <div class="statusBox" aria-live="polite" aria-atomic="true" role="status">
+        <div class="statusTitle" id="statusTitle" tabindex="-1">Aguardando pagamento...</div>
+        <div class="statusMsg" id="statusMessage">Estamos processando seu pagamento</div>
+        <div class="copied" id="copiedMsgStatus" role="status" aria-live="polite" style="display:none">Código copiado para área de transferência ✅</div>
+      </div>
+
+      <div style="margin-top:12px" class="row-between">
+        <a id="openAppBtn" class="open-app" href="#" target="_blank" rel="noopener" role="button" aria-label="Abrir no aplicativo"> 
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp;Abrir no app
+        </a>
+
+        <button id="confirmBtn" class="confirm">Confirmar pagamento</button>
+      </div>
+
+      <div style="margin-top:12px">
+        <label style="font-size:12px;color:var(--muted)">Código PIX Cópia e Cola</label>
+        <textarea id="pixRaw" rows="3" style="width:100%;padding:8px;border-radius:8px;border:1px solid #eaeaea;margin-top:6px" readonly></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <footer role="contentinfo" aria-label="Rodapé - Suporte e informações" style="margin-top:18px;">
+    <div style="display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <div style="display:inline-flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:#e9fff2;border:1px solid #d6ffe5;">
+        <img src="https://i.pravatar.cc/50?img=60" alt="Avatar do Suporte" style="width:40px;height:40px;border-radius:8px;object-fit:cover;" />
+        <div style="text-align:left;line-height:1">
+          <div style="font-weight:700;color:#0b7b3a;">Suporte Avalia</div>
+          <div style="font-size:13px;color:#6b7280;">Resposta rápida via e-mail</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;max-width:360px;">
+        <div style="font-size:14px;color:#111;margin-bottom:6px;">
+          Em caso de dúvidas: <a href="mailto:contato@avaliaapp.site" style="color:#0b6ef7;text-decoration:none;font-weight:600;">contato@avaliaapp.site</a>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:#9aa3ad;">
+          <img src="https://i.postimg.cc/BbMxjygp/image.png" alt="TriboPay" style="width:20px;height:20px;object-fit:contain;border-radius:4px;" />
+          <span>Pagamento processado com segurança pela <strong>TriboPay</strong></span>
+        </div>
+
+        <div style="margin-top:8px;font-size:11px;color:#b3bcc3;">
+          <a href="/privacidade" style="color:inherit;text-decoration:underline;margin-right:10px">Política de Privacidade</a>
+          <a href="/termos" style="color:inherit;text-decoration:underline">Termos de Uso</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;color:#d1d6db;font-size:11px;margin-top:12px;">
+      © <span id="currentYear"></span> Avalia — Todos os direitos reservados
+    </div>
+
+    <script>
+      try { document.getElementById('currentYear').textContent = new Date().getFullYear(); } catch(e){}
+    </script>
+  </footer>
+
+  <script>
+  (function(){
+    // ---------- CONFIG ----------
+    const CHECK_URL = 'https://webhook.msgagenciadigital.com/webhook/api-woovi-checkout-consultar';
+    const CHECK_PARAM = 'hash'; // query param name to send to CHECK_URL
+
+    // ---------- URL PARAMS ----------
+    const params = new URLSearchParams(window.location.search);
+    const HASH = params.get('hash') || params.get('transaction') || '';
+    const ORDER_ID = params.get('orderId') || params.get('id') || '';
+    const VALOR_PARAM = params.get('valor') || params.get('amount') || params.get('totalAmount') || '0.00';
+    const PIX_PAYLOAD_RAW = params.get('chave') || params.get('pix') || params.get('qr_base64') || '';
+
+    // ---------- ELEMENTS ----------
+    const pixKey = document.getElementById('pixKey');
+    const pixRaw = document.getElementById('pixRaw');
+    const qrImage = document.getElementById('qrImage');
+    const amountLabel = document.getElementById('amountLabel');
+    const orderIdDisplay = document.getElementById('orderIdDisplay');
+    const countdownEl = document.getElementById('countdown');
+    const expiresText = document.getElementById('expiresText');
+    const spinner = document.getElementById('spinner');
+    const statusTitle = document.getElementById('statusTitle');
+    const statusMessage = document.getElementById('statusMessage');
+    const copyPrimary = document.getElementById('copyPrimary');
+    const copiedMsgTop = document.getElementById('copiedMsgTop');
+    const copiedMsgStatus = document.getElementById('copiedMsgStatus');
+    const openAppBtn = document.getElementById('openAppBtn');
+    const confirmBtn = document.getElementById('confirmBtn');
+
+    // ---------- HELPERS ----------
+    function parseValor(v){
+      if(!v) return 0;
+      const s = String(v);
+      const digits = s.replace(/\D/g,'');
+      if(!s.includes('.') && !s.includes(',') && digits.length>2) return parseInt(digits,10)/100;
+      const norm = s.replace(',', '.').replace(/[^\d.]/g,'');
+      const n = parseFloat(norm);
+      return isNaN(n)?0:n;
+    }
+    function isEMV(s){ return !!s && String(s).trim().startsWith('000201'); }
+
+    function isLikelyBase64Image(s){
+      if(!s) return false;
+      if (s.startsWith('data:image')) return true;
+      if (s.length < 200) return false;
+      const cleaned = s.replace(/\s/g,'');
+      if (!/^[A-Za-z0-9+/=]+$/.test(cleaned)) return false;
+      return cleaned.endsWith('=') || cleaned.endsWith('==') || (cleaned.length % 4 === 0);
+    }
+
+    function buildQrUrl(payload){ return 'https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=' + encodeURIComponent(payload); }
+    function showSpinner(on){ spinner.style.display = on ? 'block' : 'none'; spinner.setAttribute('aria-hidden', !on); }
+
+    function safeSetText(el, txt){
+      if(!el) return;
+      el.textContent = txt;
+    }
+
+    // Robust extractor of PIX candidate from /check response
+    function extractPixCandidate(json){
+      try {
+        const item = Array.isArray(json) && json.length>0 ? json[0] : json;
+        const body = item.body || item;
+        if (!body) return '';
+        // pix object
+        if (body.pix) {
+          if (body.pix.payload) return body.pix.payload;
+          if (body.pix.pix_url) return body.pix.pix_url;
+          if (body.pix.pix_qr_code) return body.pix.pix_qr_code;
+          if (body.pix.qr) return body.pix.qr;
+          if (body.pix.qr_code_base64) return 'data:image/png;base64,' + body.pix.qr_code_base64;
+        }
+        if (body.qr) return body.qr;
+        if (body.pix_payload) return body.pix_payload;
+        if (body.raw && body.raw.pix && body.raw.pix.pix_qr_code) return body.raw.pix.pix_qr_code;
+        return '';
+      } catch(e){
+        console.warn('extractPixCandidate error', e);
+        return '';
+      }
+    }
+    
+    // ---------- Extrair e preencher valor (currency) ----------
+function formatBRL(n) {
+  // Recebe Number (reais) e retorna "R$ 12,34"
+  // Trabalhar dígito a dígito para evitar erros: multiplicações simples ok
+  const reais = Math.floor(Math.abs(Math.trunc(n))); // parte inteira
+  const cents = Math.round((Math.abs(n) - reais) * 100);
+  // montar string com zero-padding do centavo
+  const centsStr = String(cents).padStart(2, '0');
+  // formata parte inteira com separador de milhares simples
+  const intStr = String(reais).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return `R$ ${intStr},${centsStr}`;
+}
+
+function normalizeAmountValue(raw) {
+  // raw pode ser number ou string. Retorna Number em reais (ex: 5.00)
+  if (raw === null || raw === undefined || raw === '') return 0;
+  // se já for number
+  if (typeof raw === 'number') {
+    // Heurística: se inteiro e > 0 -> provavelmente centavos (ex: 500 => 5.00)
+    if (Number.isInteger(raw)) {
+      // se valor grande (ex: > 1000000) assumimos unidades e dividimos por 100? 
+      // manter simples: assumir centavos quando inteiro
+      return raw / 100;
+    }
+    return raw; // float já em reais
+  }
+  // se string: tenta detectar separador
+  const s = String(raw).trim();
+  // se contém ',' ou '.' com decimais -> parse com replace
+  if (/[.,]/.test(s)) {
+    // normaliza vírgula para ponto e remove tudo que não digito/point
+    const norm = s.replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, '');
+    const v = parseFloat(norm);
+    return isNaN(v) ? 0 : v;
+  }
+  // string só com dígitos -> inteiro, interpretamos como centavos
+  const digits = s.replace(/\D/g, '');
+  if (!digits) return 0;
+  const intv = parseInt(digits, 10);
+  return isNaN(intv) ? 0 : (intv / 100);
+}
+
+function extractAmountFromResponse(json){
+  try {
+    const item = Array.isArray(json) && json.length>0 ? json[0] : json;
+    const body = item.body || item;
+    // Checar vários caminhos possíveis (exemplos do seu JSON)
+    const candidates = [
+      body && body.amount,
+      body && body.raw && body.raw.amount,
+      body && body.raw && body.raw.transaction && body.raw.transaction.amount, // fallback
+      body && body.amount_liquid,
+      (body && body.items && body.items[0] && (body.items[0].price || body.items[0].amount)),
+      (body && body.offer && body.offer.price),
+      (body && body.product && body.product.price),
+      body && body.price,
+      body && body.total,
+    ];
+    for (const c of candidates) {
+      if (c !== undefined && c !== null && c !== '') {
+        return normalizeAmountValue(c);
+      }
+    }
+    return 0;
+  } catch (e) {
+    console.warn('extractAmountFromResponse error', e);
+    return 0;
+  }
+}
+
+// Função utilitária para atualizar a UI (usar quando tiver valor)
+function setAmountLabelFromNumber(amountReais) {
+  try {
+    amountLabel.textContent = formatBRL(Number(amountReais || 0));
+  } catch (e) {
+    // fallback simples
+    amountLabel.textContent = 'R$ 0,00';
+  }
+}
+
+
+    function extractStatus(json){
+      try {
+        const item = Array.isArray(json) && json.length>0 ? json[0] : json;
+        const body = item.body || item;
+        // check many possible places
+        const candidates = [
+          body && body.status,
+          body && body.payment_status,
+          item && item.status,
+          item && item.payment_status,
+          body && body.raw_status,
+          body && body.raw && body.raw.payment_status
+        ];
+        for (let c of candidates) {
+          if (c) return String(c).toLowerCase();
+        }
+        return '';
+      } catch(e){
+        return '';
+      }
+    }
+
+    async function copyToClipboard(text){
+      if(!text) return false;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        // show top copied msg mainly for user
+        if (copiedMsgTop) { copiedMsgTop.style.display = 'block'; setTimeout(()=> copiedMsgTop.style.display = 'none', 2500); }
+        return true;
+      } catch(e){
+        console.warn('copy failed', e);
+        return false;
+      }
+    }
+
+    // ---------- Populate UI initial ----------
+const valorNumber = parseValor(VALOR_PARAM);
+// use o helper para formatar sempre da mesma forma
+setAmountLabelFromNumber(valorNumber);
+
+    const orderDisplay = HASH || ORDER_ID || ('ORD' + Math.floor(Math.random()*900000+100000));
+    orderIdDisplay.textContent = orderDisplay;
+
+    // Normalize payload / QR initial
+    let PIX_PAYLOAD = PIX_PAYLOAD_RAW ? decodeURIComponent(PIX_PAYLOAD_RAW) : '';
+    let QR_BASE64 = params.get('qr_base64') || '';
+
+    if (QR_BASE64) {
+      qrImage.src = QR_BASE64.startsWith('data:image') ? QR_BASE64 : ('data:image/png;base64,' + QR_BASE64);
+      pixRaw.value = PIX_PAYLOAD || '';
+      pixKey.value = PIX_PAYLOAD || pixRaw.value;
+      if (PIX_PAYLOAD && PIX_PAYLOAD.startsWith('http')) openAppBtn.href = PIX_PAYLOAD;
+    } else if (PIX_PAYLOAD) {
+      if (PIX_PAYLOAD.startsWith('http')) {
+        qrImage.src = PIX_PAYLOAD;
+        pixRaw.value = PIX_PAYLOAD;
+        pixKey.value = PIX_PAYLOAD;
+        openAppBtn.href = PIX_PAYLOAD;
+      } else if (isEMV(PIX_PAYLOAD)) {
+        qrImage.src = buildQrUrl(PIX_PAYLOAD);
+        pixRaw.value = PIX_PAYLOAD;
+        pixKey.value = PIX_PAYLOAD;
+      } else if (isLikelyBase64Image(PIX_PAYLOAD)) {
+        qrImage.src = 'data:image/png;base64,' + PIX_PAYLOAD;
+        pixRaw.value = '';
+        pixKey.value = '';
+      } else {
+        pixRaw.value = PIX_PAYLOAD;
+        pixKey.value = PIX_PAYLOAD;
+        qrImage.src = buildQrUrl(PIX_PAYLOAD);
+      }
+    } else {
+      const fallback = `PIX - Pedido ${orderDisplay} - R$ ${valorNumber.toFixed(2)}`;
+      pixRaw.value = fallback;
+      pixKey.value = fallback;
+      qrImage.src = buildQrUrl(fallback);
+    }
+
+    // ---------- Copy handlers ----------
+    copyPrimary.addEventListener('click', async () => {
+      const text = pixKey.value || pixRaw.value || '';
+      if(!text) { alert('Nenhum código para copiar'); return; }
+      const ok = await copyToClipboard(text);
+      if(!ok) alert('Não foi possível copiar automaticamente. Selecione e copie manualmente:\n\n' + text);
+    });
+    pixRaw.addEventListener('click', ()=> {
+      copyToClipboard(pixRaw.value || pixKey.value || '');
+    });
+
+    // ---------- Open app link behavior ----------
+    openAppBtn.addEventListener('click', (ev) => {
+      // if href is '#' or empty, open QR image instead
+      const href = openAppBtn.getAttribute('href') || '#';
+      if (href === '#' || href.trim() === '') {
+        ev.preventDefault();
+        if (qrImage && qrImage.src) {
+          window.open(qrImage.src, '_blank', 'noopener');
+        } else {
+          alert('Nenhum payload disponível');
+        }
+      }
+      // otherwise let the anchor open its href
+    });
+
+    // ---------- Poll / check endpoint ----------
+    async function checkStatusOnce(){
+      try {
+        const key = (CHECK_PARAM === 'orderId') ? (ORDER_ID || HASH) : (HASH || ORDER_ID);
+        if (!key) throw new Error('Nenhum identificador (hash/orderId) disponível.');
+        const url = new URL(CHECK_URL);
+        url.searchParams.set(CHECK_PARAM, key);
+        const res = await fetch(url.toString(), {cache:'no-store'});
+        if (!res.ok) {
+          if (res.status === 404) return { ok:false, status:'not_found' };
+          return { ok:false, status:'error', code:res.status };
+        }
+        const json = await res.json();
+        // preencher valor se o backend retornar amount
+        const parsedAmount = extractAmountFromResponse(json);
+        if (parsedAmount && parsedAmount > 0) {
+          setAmountLabelFromNumber(parsedAmount);
+        }
+        const status = extractStatus(json);
+        const pixCandidate = extractPixCandidate(json);
+        return { ok:true, status: status, raw: json, pix: pixCandidate };
+      } catch (e) {
+        console.warn('checkStatusOnce error', e);
+        return { ok:false, status:'network_error', error: e };
+      }
+    }
+
+    async function handlePaidAndRedirect(){
+      statusTitle.textContent = 'Pago ✅';
+      statusMessage.textContent = 'Pagamento confirmado! Redirecionando...';
+      showSpinner(false);
+      // focus to announce to assistive tech
+      try { statusTitle.focus(); } catch(e){}
+      // small delay then redirect
+      setTimeout(()=> {
+        const q = new URLSearchParams();
+        if (HASH) q.set('hash', HASH);
+        if (ORDER_ID) q.set('orderId', ORDER_ID);
+        window.location.href = `../sucesso?${q.toString()}`;
+      }, 800);
+    }
+
+    async function pollStatusWithBackoff(){
+      confirmBtn.disabled = true;
+      statusTitle.textContent = 'Verificando...';
+      statusMessage.textContent = 'Consultando status do pagamento...';
+      showSpinner(true);
+
+      // delays: try immediately + backoff. total attempts limited.
+      const delays = [0, 2000, 5000, 10000, 20000]; // ~37s total waiting
+      for (let i=0;i<delays.length;i++){
+        if (delays[i] > 0) await new Promise(r => setTimeout(r, delays[i]));
+        const res = await checkStatusOnce();
+        if (!res.ok) {
+          if (res.status === 'not_found') {
+            safeSetText(statusTitle, 'Cobrança não encontrada');
+            safeSetText(statusMessage, 'Contate o suporte com o código do pedido.');
+            showSpinner(false);
+            break;
+          }
+          if (res.status === 'network_error') {
+            safeSetText(statusTitle, 'Erro de rede');
+            safeSetText(statusMessage, 'Houve um problema de conexão. Tentando novamente...');
+            continue;
+          }
+          safeSetText(statusTitle, 'Erro');
+          safeSetText(statusMessage, 'Erro ao verificar. Tente novamente.');
+          continue;
+        }
+
+        // If provider returned new PIX payload after initial creation, sync it
+        if (res.pix && !PIX_PAYLOAD) {
+          PIX_PAYLOAD = res.pix;
+          pixRaw.value = PIX_PAYLOAD;
+          pixKey.value = PIX_PAYLOAD;
+          try {
+            if (PIX_PAYLOAD.startsWith('http')) {
+              qrImage.src = PIX_PAYLOAD;
+              openAppBtn.href = PIX_PAYLOAD;
+            } else if (isEMV(PIX_PAYLOAD)) {
+              qrImage.src = buildQrUrl(PIX_PAYLOAD);
+            } else if (isLikelyBase64Image(PIX_PAYLOAD)) {
+              qrImage.src = PIX_PAYLOAD.startsWith('data:image') ? PIX_PAYLOAD : ('data:image/png;base64,'+PIX_PAYLOAD);
+            } else {
+              qrImage.src = buildQrUrl(PIX_PAYLOAD);
+            }
+          } catch(e){ console.warn('Erro ao atualizar QR com payload novo', e); }
+        }
+
+        const st = (res.status || '').toString().toLowerCase();
+
+        if (/(paid|pago|confirmed)/.test(st)) {
+          await handlePaidAndRedirect();
+          return;
+        } else if (/(waiting|pending|waiting_payment|pendente)/.test(st)) {
+          safeSetText(statusTitle, `Pendente (tentativa ${i+1}/${delays.length})`);
+          safeSetText(statusMessage, 'Pagamento ainda não confirmado. Aguarde ou verifique no app.');
+        } else if (/(expired|vencido|failed|rejected)/.test(st)) {
+          safeSetText(statusTitle, 'Expirado / Rejeitado');
+          safeSetText(statusMessage, 'Pagamento não realizado. Gere outro PIX.');
+          showSpinner(false);
+          break;
+        } else {
+          safeSetText(statusTitle, `Status: ${st || 'desconhecido'}`);
+          safeSetText(statusMessage, 'Aguardando confirmação...');
+        }
+      }
+
+      confirmBtn.disabled = false;
+      showSpinner(false);
+    }
+
+    confirmBtn.addEventListener('click', (ev) => { ev.preventDefault(); pollStatusWithBackoff(); });
+
+    // ---------- Countdown (10 minutos) ----------
+    (function startCountdown(seconds = 10 * 60){
+      let t = seconds;
+      countdownEl.textContent = `${String(Math.floor(t/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;
+      const int = setInterval(()=>{
+        if (t <= 0) { clearInterval(int); countdownEl.textContent = 'EXPIRADO'; statusTitle.textContent='Expirado'; statusMessage.textContent='Tempo esgotado. Gere outro PIX.'; confirmBtn.disabled=true; return;}
+        t--;
+        const mm = Math.floor(t/60), ss = t%60;
+        countdownEl.textContent = `${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')}`;
+      },1000);
+    })();
+
+    // ---------- If PIX missing, try fetch from check endpoint (fills payload) ----------
+    (async function tryFetchPixIfMissing(){
+      if (PIX_PAYLOAD) return;
+      try {
+        const key = (CHECK_PARAM === 'orderId') ? (ORDER_ID || HASH) : (HASH || ORDER_ID);
+        if (!key) return;
+        const url = new URL(CHECK_URL);
+        url.searchParams.set(CHECK_PARAM, key);
+        const res = await fetch(url.toString(), {cache:'no-store'});
+        if (!res.ok) return;
+        const json = await res.json();
+       // preencher valor se disponível
+        const parsedAmount = extractAmountFromResponse(json);
+        if (parsedAmount && parsedAmount > 0) setAmountLabelFromNumber(parsedAmount);
+
+        const candidate = extractPixCandidate(json);
+        if (!candidate) return;
+        PIX_PAYLOAD = candidate;
+        if (candidate.startsWith('http')) {
+          qrImage.src = candidate;
+          pixRaw.value = candidate;
+          pixKey.value = candidate;
+          openAppBtn.href = candidate;
+        } else if (isEMV(candidate)) {
+          qrImage.src = buildQrUrl(candidate);
+          pixRaw.value = candidate;
+          pixKey.value = candidate;
+        } else if (isLikelyBase64Image(candidate)) {
+          qrImage.src = candidate.startsWith('data:image') ? candidate : ('data:image/png;base64,'+candidate);
+          pixRaw.value = '';
+          pixKey.value = '';
+        } else {
+          pixRaw.value = candidate;
+          pixKey.value = candidate;
+          qrImage.src = buildQrUrl(candidate);
+        }
+      } catch(err){
+        console.warn('Não foi possível preencher PIX automaticamente:', err);
+      }
+    })();
+
+    // ---------- Initial spinner show then hide ----------
+    showSpinner(true);
+    setTimeout(()=> showSpinner(false), 700);
+
+    // Optional: auto-start a quick status check once on page load (non-blocking)
+    (async function quickCheckOnLoad(){
+      try {
+        const res = await checkStatusOnce();
+        if (res && res.ok && /(paid|pago|confirmed)/.test(res.status)) {
+          // payment already confirmed
+          await handlePaidAndRedirect();
+        } else if (res && res.ok && res.pix && !PIX_PAYLOAD) {
+          // fill PIX from server if available
+          PIX_PAYLOAD = res.pix;
+          pixRaw.value = PIX_PAYLOAD;
+          pixKey.value = PIX_PAYLOAD;
+          if (PIX_PAYLOAD.startsWith('http')) openAppBtn.href = PIX_PAYLOAD;
+          if (res && res.ok) {
+          const parsedAmount = extractAmountFromResponse(res.raw || res.raw || res); // dependendo de como checkStatusOnce retornou
+          if (parsedAmount && parsedAmount > 0) setAmountLabelFromNumber(parsedAmount);
+        }
+        }
+      } catch(e){}
+    })();
+
+  })();
+  </script>
+</body>
+</html>
