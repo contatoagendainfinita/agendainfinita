@@ -149,7 +149,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (resp.ok) {
                     // --- REDIRECIONAMENTO PARA O CHECKOUT (COM PARÂMETROS CORRIGIDOS) ---
                     const checkoutBaseUrl = form.dataset.checkout;
-                    let redirectUrl = new URL(checkoutBaseUrl);
+                    // Linha corrigida
+                    let redirectUrl = new URL(checkoutBaseUrl, window.location.origin);
                     
                     // PARÂMETROS ATUALIZADOS CONFORME REQUISITO DO CHECKOUT
                     redirectUrl.searchParams.set('cust_name', nome); // Alterado de 'nome'
