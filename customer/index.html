@@ -17,10 +17,95 @@
     
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Garantir que .hidden funcione */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Melhorias visuais para loading */
+        .initial-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            text-align: center;
+            color: var(--color-text-secondary);
+        }
+        
+        .initial-loading .spinner {
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        /* Progresso do polling */
+        .polling-progress {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+        
+        /* Alerta de validação */
+        .validation-alert {
+            background-color: #fef3c7;
+            border: 1px solid #fbbf24;
+            color: #92400e;
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-    <main class="page">
-        <div class="container">
+   <main class="page">
+    <div class="container">
+        <!-- ESTADO DE CARREGAMENTO INICIAL -->
+        <div id="initial-loading" class="initial-loading">
+            <div class="spinner"></div>
+            <p>Carregando dados do seu pedido...</p>
+            <small style="color: #9ca3af; margin-top: 0.5rem;">Por favor, aguarde</small>
+        </div>
+
+        <!-- ESTADO DE ERRO (SEM HASH) -->
+        <div id="no-hash-error" class="error-state hidden">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2>Pedido não encontrado</h2>
+            <p>Não conseguimos localizar seus dados. Por favor, inicie seu pedido novamente ou entre em contato com o suporte.</p>
+            <a id="redirect-to-checkout" class="btn btn--primary" href="/checkout/">
+                <i class="fas fa-arrow-left"></i>
+                Voltar para o Checkout
+            </a>
+        </div>
+
+        <!-- ESTADO DE ERRO (HASH INVÁLIDO) -->
+        <div id="invalid-hash-error" class="error-state hidden">
+            <div class="error-icon">
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <h2>Link inválido</h2>
+            <p>O código de identificação do pedido está incorreto. Verifique o link recebido ou solicite um novo.</p>
+            <a class="btn btn--primary" href="/checkout/">
+                <i class="fas fa-arrow-left"></i>
+                Voltar para o Checkout
+            </a>
+        </div>
+
+        <!-- CONTEÚDO PRINCIPAL (INICIALMENTE ESCONDIDO) -->
+        <div id="main-content" class="hidden">
+            <!-- Alerta de validação (se necessário) -->
+            <div id="validation-alert" class="validation-alert hidden">
+                <i class="fas fa-info-circle"></i>
+                <span id="validation-message"></span>
+            </div>
+            
             <header class="page-header">
                 <div class="page-header__info">
                     <span class="page-header__label">Pedido:</span>
@@ -34,15 +119,15 @@
 
             <section class="pix-section">
                 <div class="pix-code">
-                    <input id="pixKey" class="pix-code__input" readonly aria-label="Código PIX (copia e cola)" />
+                    <input id="pixKey" class="pix-code__input" readonly aria-label="Código PIX (copia e cola)" placeholder="Carregando código PIX..." />
                     <div id="copiedMsgTop" class="pix-code__msg" role="status" aria-live="polite">Código copiado para área de transferência ✅</div>
-                    <button id="copyPrimary" class="btn btn--primary">
+                    <button id="copyPrimary" class="btn btn--primary" disabled>
                         <i class="fa-regular fa-copy"></i> Copiar código (PIX Copia e Cola)
                     </button>
                 </div>
 
                 <div class="qr-container" aria-hidden="false">
-                    <img id="qrImage" class="qr-container__image" alt="QR Code PIX" />
+                    <img id="qrImage" class="qr-container__image" alt="QR Code PIX" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Crect fill='%23f0f0f0' width='260' height='260'/%3E%3Ctext x='50%25' y='50%25' fill='%23999' text-anchor='middle' dy='.3em' font-family='Arial' font-size='14'%3ECarregando QR Code...%3C/text%3E%3C/svg%3E" />
                     <div class="qr-container__expires">
                         <span>Expira em: </span>
                         <span id="countdown">10:00</span>
@@ -61,16 +146,16 @@
 
             <div class="status-container">
                 <div id="spinner" class="spinner" aria-hidden="true"></div>
-                
                 <div class="status-box" aria-live="polite" aria-atomic="true" role="status">
                     <h3 id="statusTitle" class="status-box__title" tabindex="-1">Aguardando pagamento...</h3>
                     <p id="statusMessage" class="status-box__message">Estamos processando seu pagamento</p>
-                    <div id="copiedMsgStatus" class="pix-code__msg" role="status" aria-live="polite">Código copiado para área de transferência ✅</div>
+                    <p id="pollingProgress" class="polling-progress hidden"></p>
+                    <div id="copiedMsgStatus" class="pix-code__msg" role="status" aria-live="polite" style="display:none">Código copiado para área de transferência ✅</div>
                 </div>
             </div>
 
             <div class="actions">
-                <a id="openAppBtn" class="btn btn--ghost" href="#" target="_blank" rel="noopener" role="button" aria-label="Abrir no aplicativo"> 
+                <a id="openAppBtn" class="btn btn--ghost" href="#" target="_blank" rel="noopener" role="button" aria-label="Abrir no aplicativo">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     Abrir no app
                 </a>
@@ -79,10 +164,11 @@
 
             <div class="raw-pix-section">
                 <label for="pixRaw" class="raw-pix-section__label">Código PIX Cópia e Cola</label>
-                <textarea id="pixRaw" class="raw-pix-section__textarea" rows="3" readonly></textarea>
+                <textarea id="pixRaw" class="raw-pix-section__textarea" rows="3" readonly placeholder="O código PIX aparecerá aqui..."></textarea>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
     <footer>
         <div class="footer-content">
@@ -137,7 +223,6 @@
     <!-- Script de Rastreamento UTM -->
     <script>
     // trakiefy-latest.js v1.0.0 - Seu Utmify 100% grátis e melhor que o original
-    // Envolve todo o script em DOMContentLoaded para garantir que o body exista
     document.addEventListener("DOMContentLoaded", () => {
       const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','ttclid','xcod','sck','src','click_id','cid'];
       const storage = localStorage;
@@ -188,7 +273,6 @@
 
       // Executa agora + sempre que mudar o DOM
       restoreLinks();
-      // Agora o document.body existe, então o MutationObserver funcionará
       new MutationObserver(restoreLinks).observe(document.body, { childList: true, subtree: true });
       setTimeout(restoreLinks, 1500);
       setTimeout(restoreLinks, 4000);
