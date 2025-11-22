@@ -153,10 +153,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     let redirectUrl = new URL(checkoutBaseUrl, window.location.origin);
                     
                     // PARÂMETROS ATUALIZADOS CONFORME REQUISITO DO CHECKOUT
-                    redirectUrl.searchParams.set('cust_name', nome); // Alterado de 'nome'
+                    redirectUrl.searchParams.set('nome', nome); // Alterado de 'nome'
                     redirectUrl.searchParams.set('email', email);     // Mantido 'email'
-                    redirectUrl.searchParams.set('phone', celular);  // Alterado de 'celular'
-                    redirectUrl.searchParams.set('document', cpf);   // Alterado de 'cpf'
+                    redirectUrl.searchParams.set('telefone', celular);  // Alterado de 'celular'
+                    redirectUrl.searchParams.set('cpf', cpf);   // Alterado de 'cpf'
 
                     // Os UTMs continuam sendo passados normalmente
                     Object.entries(utms).forEach(([k, v]) => {
